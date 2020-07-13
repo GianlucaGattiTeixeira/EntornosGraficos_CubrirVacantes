@@ -22,7 +22,7 @@ $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
 
 ?>
         <div class="container">
-            <form action="seleccionVacante.php" method="post">
+            <form action="seleccion_vacante.php" method="post">
                 <table class="table">
                     <thead>
                         <tr>

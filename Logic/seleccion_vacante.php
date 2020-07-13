@@ -23,7 +23,7 @@ $_SESSION['cod_vacante']=$fila['cod_vacante'];
 
 
 ?>
-            <form action="agregarVacante.php" method="post" enctype="multipart/form-data">
+            <form action="agregar_vacante.php" method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
 					<br/>
 					<h3>Iniciar sesion</h3>
@@ -55,10 +55,10 @@ $_SESSION['cod_vacante']=$fila['cod_vacante'];
 
 <?php
 
-/*
+
 mysqli_free_result($resultado);
 mysqli_close($link);
-*/
+
 ?>
 
 </body>
