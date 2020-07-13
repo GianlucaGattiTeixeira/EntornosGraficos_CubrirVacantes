@@ -10,12 +10,12 @@
 <?php
 session_start();
 
-$cod_catedra = $_POST['seleccion'];
+$cod_vacante = $_POST['seleccion'];
 
 
 $conn = include("conexion.php");
 
-$sentencia = "SELECT * FROM vacante WHERE cod_catedra='$cod_catedra'";
+$sentencia = "SELECT * FROM vacante WHERE cod_vacante='$cod_vacante'";
 $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
 $fila = mysqli_fetch_array($resultado);
 
@@ -26,7 +26,7 @@ $_SESSION['cod_vacante']=$fila['cod_vacante'];
             <form action="agregar_vacante.php" method="post" enctype="multipart/form-data">
 				<div class="form-group col-md-12">
 					<br/>
-					<h3>Iniciar sesion</h3>
+					<h3>Enviar postulacion</h3>
                 </div>
                 
                 <div class="form-group">
