@@ -108,9 +108,10 @@ DROP TABLE IF EXISTS `postulacion`;
 CREATE TABLE `postulacion` (
   `dni` int(11) NOT NULL,
   `cod_vacante` int(11) NOT NULL,
-  `fecha_hora` datetime(6) NOT NULL,
+  `fecha_hora` datetime NOT NULL,
   `curriculum` varchar(45) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`dni`,`cod_vacante`),
+  `cod_curriculum` int(11) NOT NULL,
+  PRIMARY KEY (`dni`,`cod_vacante`,`fecha_hora`),
   KEY `fk_postulacion_vacante_idx` (`cod_vacante`),
   CONSTRAINT `fk_postulacion_usuario` FOREIGN KEY (`dni`) REFERENCES `usuario` (`dni`) ON UPDATE CASCADE,
   CONSTRAINT `fk_postulacion_vacante` FOREIGN KEY (`cod_vacante`) REFERENCES `vacante` (`cod_vacante`) ON UPDATE CASCADE
@@ -123,6 +124,7 @@ CREATE TABLE `postulacion` (
 
 LOCK TABLES `postulacion` WRITE;
 /*!40000 ALTER TABLE `postulacion` DISABLE KEYS */;
+INSERT INTO `postulacion` VALUES (55555555,2,'2020-07-13 13:10:11','Proyecto - Apunte General 2020.pdf',2),(55555555,3,'2020-07-13 11:19:19','PRESENTATION 1.1.1.pdf',1);
 /*!40000 ALTER TABLE `postulacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +185,7 @@ CREATE TABLE `vacante` (
 
 LOCK TABLES `vacante` WRITE;
 /*!40000 ALTER TABLE `vacante` DISABLE KEYS */;
-INSERT INTO `vacante` VALUES (1,2,'2020-07-09 11:00:00','2020-10-09 11:00:00',NULL,1),(2,1,'2020-07-10 11:00:00','2020-11-10 11:00:00',NULL,2),(3,1,'2020-07-11 10:00:00','2020-12-11 10:00:00',NULL,3);
+INSERT INTO `vacante` VALUES (1,2,'2020-07-09 11:00:00','2020-10-09 11:00:00',NULL,1),(2,1,'2020-07-10 11:00:00','2020-11-10 11:00:00',NULL,2),(3,1,'2020-07-11 10:00:00','2020-12-11 10:00:00',NULL,3),(4,1,'2020-07-25 10:00:00','2020-12-25 10:00:00','Mayor de 25 años',3);
 /*!40000 ALTER TABLE `vacante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -196,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-09 12:36:31
+-- Dump completed on 2020-07-13 16:22:35

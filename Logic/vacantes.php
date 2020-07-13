@@ -27,7 +27,7 @@ $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
                     <thead>
                         <tr>
                         <th scope="col">Cod</th>
-                        <th scope="col">Catedra</th>
+                        <th scope="col">Cátedra</th>
                         <th scope="col">Fecha desde</th>
                         <th scope="col">Fecha hasta</th>
                         <th scope="col">Informacion</th>
