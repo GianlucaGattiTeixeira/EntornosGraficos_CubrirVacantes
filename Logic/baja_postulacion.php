@@ -19,7 +19,11 @@ $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
 
 ?>
         <div class="container">
-            <form action="seleccion_vacante.php" method="post">
+            <div class="form-group col-md-12">
+                <br/>
+                <h3>Eliminar postulacion</h3>
+            </div>
+            <form action="baja_postulacion2.php" method="post">
                 <table class="table">
                     <thead>
                         <tr>
@@ -29,6 +33,7 @@ $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
                         <th scope="col">Nombre CV</th>
                         <th scope="col">Codigo CV</th>
                         <th scope="col">Curriculum</th>
+                        <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -44,7 +49,8 @@ while ($fila = mysqli_fetch_array($resultado))
                         <td><?php echo ($fila['fecha_hora']); ?></td>  
                         <td><?php echo ($fila['curriculum']); ?></td>
                         <td><?php echo ($fila['cod_curriculum']); ?></td>
-                        <td><a href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank"> Ver CV</a></td>
+                        <td><a href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank">Ver CV</a></td>
+                        <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'].$fila['fecha_hora'].$fila['cod_vacante']; ?>">Eliminar</button></td>
                         </tr>
 
 <?php

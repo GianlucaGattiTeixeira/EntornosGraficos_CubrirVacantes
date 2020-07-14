@@ -40,7 +40,7 @@ if (! $existe) {
     <div class="container">
         <br/>
         <h3 align="center">Modificar usuario</h3>
-        <form action="modificacion_real.php" method="post">
+        <form action="modificar_usuario2.php" method="post">
                 <div class="form-group col-md-12">
                     <h5>Datos actuales</h5>
                 </div>
