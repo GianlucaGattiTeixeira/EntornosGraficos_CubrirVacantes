@@ -22,7 +22,7 @@
                   <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./alta_vacante.html">Alta Vacante</a>
+                  <a class="nav-link" href="../Logic/vacantes.php">Listado Vacantes</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -33,13 +33,13 @@
                     <a class="dropdown-item" href="../Logic/alta_vacante.php">Alta Vacante</a>
                     <a class="dropdown-item" href="../Logic/baja_vacante.php">Baja Vacante</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">XXXXXXXXX</a>
+                    <a class="dropdown-item" href="../Logic/bm_vacante.php">Modificar-Eliminar Vacante</a>
                   </div>
                 </li>
 
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="postulacionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Vacantes
+                    Postulaciones
                   </a>
                   <div class="dropdown-menu" aria-labelledby="postulacionDropdown">
                     <a class="dropdown-item" href="../Logic/postulaciones.php">Postulaciones</a>
@@ -55,10 +55,32 @@
                 </li>
               </ul>
               <ul class="navbar-nav mr-right">
-                <li><a href="../Logic/cerrar_sesion.php" class="nav-link">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-closed-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" d="M4 1a1 1 0 0 0-1 1v13H1.5a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2a1 1 0 0 0-1-1H4zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-                  </svg>Logout</a>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Postulaciones
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
+                    <a class="dropdown-item" href="../Logic/modificar_usuario.php">Modificar Usuario</a>
+                    <a class="dropdown-item" href="baja_usuario.html">Baja_Usuario</a>
+                  </div>
+                </li>
+                <li>
+                  <a href="../Logic/cerrar_sesion.php" class="nav-link">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-closed-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M4 1a1 1 0 0 0-1 1v13H1.5a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2a1 1 0 0 0-1-1H4zm2 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    </svg>
+                    Logout
+                  </a>
+                </li>
+                <li>
+                  <a href="../Logic/cerrar_sesion.php" class="nav-link">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
+                      <path d="M13.784 14c-.497-1.27-1.988-3-5.784-3s-5.287 1.73-5.784 3h11.568z"/>
+                      <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    Login
+                  </a>
                 </li>
               </ul>
               <!--
