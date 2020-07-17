@@ -18,13 +18,14 @@ $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
 $existe = mysqli_fetch_assoc($resultado);
 
 if ($existe) {
+    session_start();
     $_SESSION['dni']=$existe['dni'];
     $_SESSION['usuario']=$existe['usuario'];
     $_SESSION['es_admin']=$existe['es_admin'];
     header("Location: ../Logic/index.php");
-    exit();
 
 } else {
+    include("../Logic/index.php");
 ?>
 
 <div class="container">
