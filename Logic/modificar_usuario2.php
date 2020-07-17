@@ -46,7 +46,7 @@ mysqli_query($link, $sentencia) or die (mysqli_error($link));
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <a href="../Views/index.html" class="btn btn-primary">Menu principal</a>           
+                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>           
                 </div>
             </div>
     </div>

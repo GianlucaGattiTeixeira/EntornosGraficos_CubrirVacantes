@@ -10,8 +10,11 @@
     </head>
     
  	<body>
+    <?php
+      session_start();
+    ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#"><img src="../Imagenes/UtnLogo.gif" alt="UTN Logo" width="30" height="40"></img></a>
+            <a class="navbar-brand" href="../Logic/index.php"><img src="../Imagenes/UtnLogo.gif" alt="UTN Logo" width="30" height="40"></img></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="../Logic/index.php">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/vacantes.php">Listado Vacantes</a>
@@ -31,8 +34,6 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
                     <a class="dropdown-item" href="../Logic/alta_vacante.php">Alta Vacante</a>
-                    <a class="dropdown-item" href="../Logic/baja_vacante.php">Baja Vacante</a>
-                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="../Logic/bm_vacante.php">Modificar-Eliminar Vacante</a>
                   </div>
                 </li>
@@ -44,26 +45,29 @@
                   <div class="dropdown-menu" aria-labelledby="postulacionDropdown">
                     <a class="dropdown-item" href="../Logic/postulaciones.php">Postulaciones</a>
                     <a class="dropdown-item" href="../Logic/baja_postulacion.php">Baja Postulacion</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">XXXXXXXXX</a>
                   </div>
                 </li>
-
 
                 <li class="nav-item">
                   <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                 </li>
               </ul>
+
+              <?php
+                if (isset($_SESSION['usuario'])){
+              ?>
               <ul class="navbar-nav mr-right">
+
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Postulaciones
+                    <?php echo $_SESSION['usuario']?>
                   </a>
                   <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
                     <a class="dropdown-item" href="../Logic/modificar_usuario.php">Modificar Usuario</a>
-                    <a class="dropdown-item" href="baja_usuario.html">Baja_Usuario</a>
+                    <a class="dropdown-item" href="../Logic/baja_usuario.html">Baja Usuario</a>
                   </div>
                 </li>
+
                 <li>
                   <a href="../Logic/cerrar_sesion.php" class="nav-link">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-closed-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -71,9 +75,14 @@
                     </svg>
                     Logout
                   </a>
-                </li>
+                </li> 
+              </ul>
+              <?php 
+                }else{
+              ?>
+              <ul class="navbar-nav mr-right">
                 <li>
-                  <a href="../Logic/cerrar_sesion.php" class="nav-link">
+                  <a href="iniciar_sesion.php" class="nav-link">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
                       <path d="M13.784 14c-.497-1.27-1.988-3-5.784-3s-5.287 1.73-5.784 3h11.568z"/>
@@ -82,7 +91,24 @@
                     Login
                   </a>
                 </li>
+
+                <li>
+                  <a href="registrarse.php" class="nav-link">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
+                      <path d="M13.784 14c-.497-1.27-1.988-3-5.784-3s-5.287 1.73-5.784 3h11.568z"/>
+                      <path fill-rule="evenodd" d="M8 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    Registrarse
+                  </a>
+                </li>
               </ul>
+
+              <?php
+                 
+                }
+              ?>
+                
               <!--
               <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -91,35 +117,5 @@
               -->
             </div>
           </nav>
-        <div class="container">
-            <br>
-            <h3>Pagina principal</h3>
-
-            <a href="iniciar_sesion.html" class="btn btn-primary">Iniciar sesion</a> 
-
-            <a href="../Logic/cerrar_sesion.php" class="btn btn-primary">Cerrar sesion</a> 
-
-            <a href="registrarse.html" class="btn btn-primary">Registrarse</a>
-
-            <a href="../Logic/modificar_usuario.php" class="btn btn-primary">Modificar usuario</a>
-
-            <a href="baja_usuario.html" class="btn btn-primary">Baja usuario</a>
-            <br><br>
-
-            <a href="alta_vacante.html" class="btn btn-primary">Alta vacante</a>
-
-            <a href="baja_vacante.html" class="btn btn-primary">Baja vacante</a>
-
-            <a href="../Logic/bm_vacante.php" class="btn btn-primary">Modif-Elim vacante</a>
-
-            <a href="../Logic/vacantes.php" class="btn btn-primary">Lista vacantes</a> 
-            <br><br>
-
-            <a href="../Logic/postulaciones.php" class="btn btn-primary">Lista postulaciones</a>
-
-            <a href="../Logic/baja_postulacion.php" class="btn btn-primary">Eliminar postulacion</a>
-
-            
-        </div>
 	</body>
 </html>
