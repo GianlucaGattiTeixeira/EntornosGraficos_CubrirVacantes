@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+    <link rel="stylesheet" href="../Logic/Estilo/estilo.css">
         <?php
         include("../Logic/index.php"); 
         ?>
@@ -49,7 +50,7 @@ while ($fila = mysqli_fetch_array($resultado))
                         <td><?php echo ($fila['fecha_hora']); ?></td>  
                         <td><?php echo ($fila['curriculum']); ?></td>
                         <td><?php echo ($fila['cod_curriculum']); ?></td>
-                        <td><a href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank">Ver CV</a></td>
+                        <td><a class="linkcv" href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank">Ver CV</a></td>
                         <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'].$fila['fecha_hora'].$fila['cod_vacante']; ?>">Eliminar</button></td>
                         </tr>
 
