@@ -2,7 +2,7 @@
 <html>
 	<head>
         <?php
-        include("../Logic/index.php"); 
+        	include("../Logic/index.php"); 
         ?>
     </head>
     
