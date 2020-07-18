@@ -2,7 +2,9 @@
 <html>
     <head>
         <?php
-        include("../Logic/index.php"); 
+            session_start();
+            if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
+            include("../Logic/index.php"); 
         ?>
     </head>
 

@@ -7,12 +7,15 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <link rel="icon" href="../Imagenes/UtnLogo.gif">
+        <?php
+          if(!isset($_SESSION)) 
+          { 
+            session_start(); 
+          } 
+        ?>
     </head>
     
  	<body>
-    <?php
-      session_start();
-    ?>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="../Logic/index.php"><img src="../Imagenes/UtnLogo.gif" alt="UTN Logo" width="30" height="40"></img></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +67,7 @@
                   </a>
                   <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
                     <a class="dropdown-item" href="../Logic/modificar_usuario.php">Modificar Usuario</a>
-                    <a class="dropdown-item" href="../Logic/baja_usuario.html">Baja Usuario</a>
+                    <a class="dropdown-item" href="../Logic/baja_usuario.php">Baja Usuario</a>
                   </div>
                 </li>
 

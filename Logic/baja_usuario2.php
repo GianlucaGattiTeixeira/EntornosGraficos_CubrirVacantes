@@ -8,47 +8,20 @@
         ?>
     </head>
 
-    <body>
-        <div class="container">
+<body>
 <?php
+//session_start();
 
-$seleccion = $_POST['seleccion'];
-
-$dni=substr($seleccion, 0,8);
-$fecha_hora=substr($seleccion, 8,27);
-$cod_vacante=substr($seleccion,27);
-
-
-$dni = (int) $dni;
-$fecha_hora=substr($fecha_hora, 0,-1);
-$cod_vacante = (int) $cod_vacante;
-
-/*
-echo ($seleccion);
-echo ($dni);echo "<br>";
-echo ($fecha_hora);echo "<br>";
-echo ($cod_vacante);echo "<br>";echo "<br>";
-
-echo (var_dump($dni));echo "<br>";
-echo (var_dump($cod_vacante));echo "<br>";
-
-echo ($fecha_hora);echo "<br>";
-*/
+$dni = $_POST['dni'];
 
 $conn = include("conexion.php");
 
-$sentencia = "SELECT * FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
-$resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
+$sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
+$resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));;
 $existe = mysqli_fetch_assoc($resultado);
 
 if ($existe) {
-
-    $a="../Archivos/";
-    $b=$existe['cod_curriculum'];
-    $c=$existe['curriculum'];
-    $direccion= $a.$b.$c;
-    unlink($direccion);
-    $sentencia = "DELETE FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
+    $sentencia = "DELETE FROM usuario WHERE dni = '$dni'";
 
     mysqli_query($link, $sentencia) or die (mysqli_error($link));
 
@@ -56,7 +29,7 @@ if ($existe) {
     <div class="container">
             <div class="form-group col-md-12">
                 <br/>
-                <h5>La postulacion fue eliminada</h5>
+                <h5>El usuario fue eliminado</h5>
             </div>
 
             <div class="form-group">
@@ -73,7 +46,7 @@ if ($existe) {
     <div class="container">
             <div class="form-group col-md-12">
                 <br/>
-                <h5>La postulacion ingresada no existe</h5>
+                <h5>El usuario ingresado no existe</h5>
             </div>
 
             <div class="form-group">

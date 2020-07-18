@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>UTN FRRO</title>         	    
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <?php
+            session_start();
+            if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
+            include_once("../Logic/index.php"); 
+        ?>
     </head>
 
     <body>

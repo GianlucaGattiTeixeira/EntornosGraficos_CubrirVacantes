@@ -2,19 +2,28 @@
 <html>
     <head>
         <?php
+        session_start();
+        if (! isset($_SESSION['dni']) ){header("Location: ../Logic/index.php");}
         include("../Logic/index.php"); 
         ?>
     </head>
     
 <body>
-    <div class="container">
 <?php
+
 $conn = include("conexion.php");
 
-$sentencia = "SELECT * FROM postulacion ORDER BY fecha_hora ASC";
+$es_admin = $_SESSION['es_admin'];
 
-$resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
-//$total_registros = mysqli_num_rows($resultado);
+if ($es_admin==1){
+    $sentencia = "SELECT * FROM postulacion ORDER BY fecha_hora ASC";
+    $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
+
+} else {
+    $dni=$_SESSION['dni'];
+    $sentencia = "SELECT * FROM postulacion WHERE dni='$dni' ORDER BY fecha_hora ASC";
+    $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
+}
 
 
 ?>
@@ -72,5 +81,4 @@ mysqli_close($link);
                 <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
             </div>
         </div>
-    </div>
 </body>
