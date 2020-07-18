@@ -3,7 +3,9 @@
     <head>
     <link rel="stylesheet" href="../Logic/Estilo/estilo.css">
         <?php
-        include("../Logic/index.php"); 
+            session_start();
+            if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
+            include("../Logic/index.php"); 
         ?>
     </head>
 
