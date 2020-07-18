@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
     <head>
-        <title>UTN FRRO</title>        
-        <link rel="stylesheet" href="../Logic/Estilo/estilo.css">	    
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-=======
-	<head>
+        
         <?php
             session_start();
             if (! isset($_SESSION['es_admin']) or ($_SESSION['es_admin']==0) ){header("Location: ../Logic/index.php");} // si no esta logeado o si esta logeado y es usuario comun: sale
             include("../Logic/index.php"); 
         ?>
->>>>>>> b560ba56884cb9cf7c9451238039ec88808b0051
     </head>
     
  	<body>

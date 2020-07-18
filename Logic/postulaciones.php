@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <link rel="stylesheet" href="../Logic/Estilo/estilo.css">
         <?php
             session_start();
             if (! isset($_SESSION['dni']) ){header("Location: ../Logic/index.php");}

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../Logic/Estilo/estilo.css">
         <?php
         include("../Logic/index.php"); 
         ?>
