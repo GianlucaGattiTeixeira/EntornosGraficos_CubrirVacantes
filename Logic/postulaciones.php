@@ -57,7 +57,7 @@ while ($fila = mysqli_fetch_array($resultado))
                         <td><?php echo ($fila['fecha_hora']); ?></td>  
                         <td><?php echo ($fila['curriculum']); ?></td>
                         <td><?php echo ($fila['cod_curriculum']); ?></td>
-                        <td><a href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank"> Ver CV</a></td>
+                        <td><a class="linkcv" href="../Archivos/<?php $a=$fila['cod_curriculum'];$b=$fila['curriculum'];echo $a.$b;?> " target="_blank"> Ver CV</a></td>
                         </tr>
 
 <?php
