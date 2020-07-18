@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php //include("../Logic/index.php"); ?>
+        <?php //include_once("../Logic/index.php"); ?>
     </head>
     
  	<body>
@@ -25,7 +25,7 @@ if ($existe) {
     header("Location: ../Logic/index.php");
 
 } else {
-    include("../Logic/index.php");
+    include_once("../Logic/header.php");
 ?>
 
 <div class="container">
@@ -48,6 +48,7 @@ if ($existe) {
 }
 mysqli_free_result($resultado);
 mysqli_close($link);
+include_once("../Logic/footer.php");
 ?>
 </body>
 </html>

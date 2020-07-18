@@ -4,7 +4,7 @@
         <?php
             session_start();
             if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
-            include("../Logic/index.php"); 
+            include_once("../Logic/header.php"); 
         ?>
     </head>
 
@@ -55,5 +55,8 @@ mysqli_query($link, $sentencia) or die (mysqli_error($link));
 <?php
 
 mysqli_close($link);
+include_once("../Logic/footer.php");
+
 ?>
 </body>
+</html>

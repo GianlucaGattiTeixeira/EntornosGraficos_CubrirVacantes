@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-            include("../Logic/index.php"); 
+            include_once("../Logic/header.php"); 
         ?>
     </head>
     
@@ -64,6 +64,7 @@ if ($existe) {
 }
 mysqli_free_result($resultado);
 mysqli_close($link);
+include_once("../Logic/footer.php");
 ?>
 </body>
      

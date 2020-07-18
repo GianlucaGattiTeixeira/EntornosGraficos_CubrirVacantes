@@ -2,7 +2,7 @@
 <html>
     <head>
         <?php
-            include("../Logic/index.php"); 
+            include_once("../Logic/header.php"); 
         ?>
     </head>
     
@@ -75,4 +75,8 @@ mysqli_close($link);
                 <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
             </div>
         </div>
+        <?php
+            include_once("../Logic/footer.php"); 
+        ?>
 </body>
+</html>

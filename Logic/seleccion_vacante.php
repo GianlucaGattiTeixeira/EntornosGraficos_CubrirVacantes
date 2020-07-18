@@ -4,7 +4,7 @@
         <?php
             session_start();
             if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
-            include_once("../Logic/index.php"); 
+            include_once("../Logic/header.php"); 
         ?>
     </head>
 
@@ -43,23 +43,14 @@ $_SESSION['cod_vacante']=$fila['cod_vacante'];
 						<button type="submit" class="btn btn-primary">Ingresar</button>            
 					</div>
 				</div>
-			
 			</form>
-
-
-
-
         </div>
-
-
-
-
-
 <?php
 
 
 mysqli_free_result($resultado);
 mysqli_close($link);
+include_once("../Logic/footer.php");
 
 ?>
 

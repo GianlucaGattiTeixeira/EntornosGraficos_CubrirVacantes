@@ -2,7 +2,7 @@
 <html>
 	<head>
         <?php
-        	include("../Logic/index.php"); 
+        	include_once("../Logic/header.php"); 
         ?>
     </head>
     
@@ -36,5 +36,8 @@
 			
 			</form>
 		</div>
+	<?php
+        include_once("../Logic/footer.php");
+    ?>
 	</body>
 </html>

@@ -4,7 +4,7 @@
         <?php
             session_start();
             if (! isset($_SESSION['dni']) ){header("Location: ../Logic/iniciar_sesion.php");}
-            include("../Logic/index.php"); 
+            include_once("../Logic/header.php"); 
         ?>
     </head>
 
@@ -112,7 +112,9 @@ if (! $existe) {
         </form>
     </div>
 
-
+    <?php
+        include_once("../Logic/footer.php");
+    ?>
 </body>
 
 <?php
@@ -120,7 +122,6 @@ if (! $existe) {
 }
 mysqli_free_result($resultado);
 mysqli_close($link);
-
 ?>
 
 </html>
