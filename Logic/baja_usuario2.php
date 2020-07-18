@@ -10,11 +10,12 @@
 
 <body>
 <?php
-//session_start();
 
 $dni = $_POST['dni'];
 
 $conn = include("conexion.php");
+echo $dni;
+
 
 $sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
 $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));;

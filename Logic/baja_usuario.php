@@ -15,11 +15,19 @@
 					<br/>
 					<h3>Eliminar usuario</h3>
 				</div>
-                <div class="form-group">
-					<label class="control-label col-md-4">Ingrese el DNI:</label>
-					<div class="col-md-10">
-					<input name="dni" class="form-control" type="number" placeholder="" >
-					</div>
+
+				<?php
+					$conn = include("conexion.php");
+					$sentencia = "SELECT * FROM usuario WHERE es_admin = 0";
+					$resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
+				?>
+
+				<div class="form-group col-md-12">
+					<select name="dni" class="form-group col-md-4">
+						<?php while ($fila = mysqli_fetch_array($resultado)) { ?>
+							<option value="<?= $fila['dni']; ?>"><?= $fila['nombre']." ".$fila['apellido'] ; ?></option>
+						<?php }?>
+					</select>
 				</div>
 
 				<div class="form-group">
