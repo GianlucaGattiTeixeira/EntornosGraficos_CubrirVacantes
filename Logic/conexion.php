@@ -1,7 +1,7 @@
 <?php
     $hostname="localhost";
-    $user="root";
-    $password="password";
+    $user="gian";
+    $password="gian";
 
 
     $link = mysqli_connect($hostname,$user,$password) or die ("Problemas de conexión a la base de datos");
