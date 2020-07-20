@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html>
+    <head>  
+             	    
+    </head>
+    
+ 	<body>
 
 <footer class="footer" style="background-color:#F8F9FA">	
   <hr></hr> 
@@ -33,3 +39,6 @@
   </div>
 <hr></hr>
 </footer>
+
+</body>
+</html>
