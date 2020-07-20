@@ -31,7 +31,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/vacantes.php">Listado Vacantes</a>
                 </li>
-
+                <?php 
+                if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin']==1) ){
+                ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="vacanteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Vacantes
@@ -41,16 +43,24 @@
                     <a class="dropdown-item" href="../Logic/bm_vacante.php">Modificar-Eliminar Vacante</a>
                   </div>
                 </li>
-
+                <?php 
+                  }
+                ?>
+                <?php 
+                if (isset($_SESSION['es_admin'])){
+                ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="postulacionDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Postulaciones
                   </a>
                   <div class="dropdown-menu" aria-labelledby="postulacionDropdown">
-                    <a class="dropdown-item" href="../Logic/postulaciones.php">Postulaciones</a>
+                    <a class="dropdown-item" href="../Logic/postulaciones.php"><?php if ($_SESSION['es_admin']==0 ){ echo "Mis postulaciones";} else {echo "Listado postulaciones";} ?></a>
                     <a class="dropdown-item" href="../Logic/baja_postulacion.php">Baja Postulacion</a>
                   </div>
                 </li>
+                <?php 
+                  }
+                ?>
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
                 </li>

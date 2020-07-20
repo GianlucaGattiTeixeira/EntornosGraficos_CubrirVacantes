@@ -22,7 +22,7 @@ $sentencia = "SELECT v.cod_vacante,v.cant_puestos, v.fecha_desde, v.fecha_hasta,
                 FROM vacante v
                 INNER JOIN catedra c
                 ON v.cod_catedra=c.cod_catedra
-                WHERE NOW() < fecha_hasta";
+                WHERE NOW() > fecha_desde and NOW() < fecha_hasta";
 
 $resultado = mysqli_query($link, $sentencia) or die (mysqli_error($link));
 
@@ -65,9 +65,7 @@ while ($fila = mysqli_fetch_array($resultado))
 <?php
 }
 
-// Liberar conjunto de resultados
 mysqli_free_result($resultado);
-// Cerrar la conexion
 mysqli_close($link);
 ?>
 

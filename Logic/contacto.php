@@ -11,7 +11,7 @@
 			<form action="../Logic/contacto2.php" method="post">
 				<div class="form-group col-md-12">
 					<br/>
-					<h3>Contacténos</h3>
+					<h3>Contáctenos</h3>
         </div>
         
         <div class="form-group">
