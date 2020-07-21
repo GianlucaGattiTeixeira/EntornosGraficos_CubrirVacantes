@@ -22,6 +22,15 @@ if ($existe) {
     $_SESSION['dni']=$existe['dni'];
     $_SESSION['usuario']=$existe['usuario'];
     $_SESSION['es_admin']=$existe['es_admin'];
+
+    $sentencia2 = "SELECT * FROM usuario u INNER JOIN jefe_catedra jc ON u.dni = jc.dni INNER JOIN catedra c ON jc.legajo = c.legajo
+                    WHERE u.usuario='$usuario' and u.contrasena='$contrasena'";
+    $resultado2 = mysqli_query($link, $sentencia2) or die (mysqli_error($link));
+    $existe2 = mysqli_fetch_assoc($resultado2);
+    if ($existe2) {
+        $_SESSION['nombre_catedra']=$existe2['nombre_catedra'];
+    }
+
     header("Location: ../Logic/index.php");
 
 } else {

@@ -64,6 +64,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../Logic/orden_merito.php">Orden de merito</a>
+                </li>
               </ul>
 
               <?php
