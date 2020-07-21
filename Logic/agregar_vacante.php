@@ -32,7 +32,6 @@ $destino = "../Archivos/".$cod_curriculum.$nombre;
 move_uploaded_file($ruta,$destino);
 
 //recuperar el dni y el cod vacante para ingresar a la bd
-session_start();
 $dni= $_SESSION['dni'];
 $cod_vacante= $_SESSION['cod_vacante'];
 

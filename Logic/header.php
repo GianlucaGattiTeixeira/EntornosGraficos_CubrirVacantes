@@ -64,9 +64,17 @@
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
                 </li>
+
+                <?php 
+                if (isset($_SESSION['nombre_catedra'])){
+                ?>
                 <li class="nav-item">
                   <a class="nav-link" href="../Logic/orden_merito.php">Orden de merito</a>
                 </li>
+                <?php 
+                  }
+                ?>
+
               </ul>
 
               <?php
