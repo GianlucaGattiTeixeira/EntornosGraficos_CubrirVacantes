@@ -25,7 +25,8 @@
             ON c.cod_catedra = v.cod_catedra
             INNER JOIN postulacion p 
             ON p.cod_vacante = v.cod_vacante
-            WHERE c.nombre_catedra = '$nombre_catedra'";
+            WHERE c.nombre_catedra = '$nombre_catedra'
+            ORDER BY v.cod_vacante ASC, p.puntaje DESC, dni";
 
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
@@ -40,10 +41,10 @@
                 <thead>
                     <tr>
                         <th scope="col">Cod vacante</th>
+                        <th scope="col">Dni postulante</th>                        
                         <th scope="col">Nombre cátedra</th>
                         <th scope="col">Fecha hasta</th>
                         <th scope="col">Info general</th>
-                        <th scope="col">Dni postulante</th>
                         <th scope="col">Curriculum</th>
                         <th scope="col">Puntaje</th>
                         <th scope="col"></th>
@@ -57,10 +58,10 @@
                     ?>
                         <tr>
                             <td><?php echo ($fila['cod_vacante']); ?></td>
+                            <td><?php echo ($fila['dni']); ?></td>
                             <td><?php echo ($fila['nombre_catedra']); ?></td>
                             <td><?php echo ($fila['fecha_hasta']); ?></td>
                             <td><?php echo ($fila['info_general']); ?></td>
-                            <td><?php echo ($fila['dni']); ?></td>
                             <td><a class="linkcv" href="../Archivos/<?php $a = $fila['cod_curriculum'];
                                                                     $b = $fila['curriculum'];
                                                                     echo $a . $b; ?> " target="_blank"> Ver CV</a></td>
@@ -70,9 +71,6 @@
 
                     <?php
                     }
-
-                    mysqli_free_result($resultado);
-                    mysqli_close($link);
                     ?>
 
 
@@ -86,6 +84,8 @@
         </div>
     </div>
     <?php
+    mysqli_free_result($resultado);
+    mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>

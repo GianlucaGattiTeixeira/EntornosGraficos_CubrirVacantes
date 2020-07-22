@@ -45,7 +45,7 @@
 
     ?>
     <div class="container">
-        <form action="orden_merito2.php" method="post">
+        <form action="orden_merito3.php" method="post">
             <div class="row">
                 <div class="col-md-12">
                     <br />
@@ -59,7 +59,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">Cod Vacante:</label>
                         <div class="col-md-12">
-                            <input name="cod_vacante" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" disabled>
+                            <input name="cod_vacante" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" readonly="readonly">
                         </div>
                     </div>
 
@@ -73,7 +73,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">Dni:</label>
                         <div class="col-md-12">
-                            <input name="dni" class="form-control" type="text" value="<?php echo $fila['dni'] ?>" disabled>
+                            <input name="dni" class="form-control" type="text" value="<?php echo $fila['dni'] ?>" readonly="readonly">
                         </div>
                     </div>
 
@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <label class="control-label col-md-4">Puntaje:</label>
                         <div class="col-md-12">
-                            <input name="puntaje" class="form-control" type="number" min="0" max="100" step="1">
+                            <input name="puntaje" class="form-control" type="number" min="0" max="100" step="1" value="<?php if(isset($fila['puntaje'])){ echo $fila['puntaje'];}  ?>">
                         </div>
                     </div>
 
@@ -129,8 +129,8 @@
     </div>
 
     <?php
-    mysqli_free_result($resultado);
-    mysqli_close($link);
+    //mysqli_free_result($resultado);
+    //mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>
