@@ -43,7 +43,7 @@ CREATE TABLE `catedra` (
 
 LOCK TABLES `catedra` WRITE;
 /*!40000 ALTER TABLE `catedra` DISABLE KEYS */;
-INSERT INTO `catedra` VALUES (1,'Analisis de Sistemas',11111,2),(2,'Diseño de Sistemas',22222,2),(3,'Proyecto Final',33333,2);
+INSERT INTO `catedra` VALUES (1,'Analisis de Sistemas',11111,2),(2,'Diseño de Sistemas',22222,2),(3,'Proyecto Final',33333,2),(4,'Java',11111,2);
 /*!40000 ALTER TABLE `catedra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +125,7 @@ CREATE TABLE `postulacion` (
 
 LOCK TABLES `postulacion` WRITE;
 /*!40000 ALTER TABLE `postulacion` DISABLE KEYS */;
-INSERT INTO `postulacion` VALUES (55555555,1,'2020-07-21 11:35:37',85,'UTN_Entornos_Gráficos_Cookies.pdf',6),(55555555,2,'2020-07-13 13:10:11',NULL,'Proyecto - Apunte General 2020.pdf',2),(55555555,3,'2020-07-13 11:19:19',NULL,'PRESENTATION 1.1.1.pdf',1),(55555555,4,'2020-07-14 19:17:54',NULL,'UTN_Entornos_Gráficos_Práctica6.pdf',3),(77777777,1,'2020-07-21 17:37:38',60,'CV - Augusto De Lisio.pdf',7),(88888888,1,'2020-07-17 17:04:39',80,'UTN_Entornos_Gráficos_Práctica_5.pdf',5);
+INSERT INTO `postulacion` VALUES (55555555,1,'2020-07-21 11:35:37',90,'UTN_Entornos_Gráficos_Cookies.pdf',6),(55555555,2,'2020-07-13 13:10:11',NULL,'Proyecto - Apunte General 2020.pdf',2),(55555555,3,'2020-07-13 11:19:19',NULL,'PRESENTATION 1.1.1.pdf',1),(55555555,4,'2020-07-14 19:17:54',NULL,'UTN_Entornos_Gráficos_Práctica6.pdf',3),(66666666,1,'2020-08-06 10:03:03',NULL,'CV-AgustínYurescia.pdf',8),(66666666,5,'2020-08-06 10:07:53',NULL,'CV-AgustínYurescia.pdf',9),(77777777,1,'2020-07-21 17:37:38',60,'CV - Augusto De Lisio.pdf',7),(88888888,1,'2020-07-17 17:04:39',80,'UTN_Entornos_Gráficos_Práctica_5.pdf',5);
 /*!40000 ALTER TABLE `postulacion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +185,7 @@ CREATE TABLE `vacante` (
 
 LOCK TABLES `vacante` WRITE;
 /*!40000 ALTER TABLE `vacante` DISABLE KEYS */;
-INSERT INTO `vacante` VALUES (1,'2020-07-09 11:00:00','2020-10-09 11:00:00','Dos años de experiencia',1),(2,'2020-07-10 11:00:00','2020-11-10 11:00:00','Física 2 aprobada',2),(3,'2020-07-11 10:00:00','2020-12-11 10:00:00','Matemática superior aprobada',3),(4,'2020-07-25 10:00:00','2020-12-25 10:00:00','Mayor de 25 años',3);
+INSERT INTO `vacante` VALUES (1,'2020-07-09 11:00:00','2020-10-09 11:00:00','Dos años de experiencia',1),(2,'2020-07-10 11:00:00','2020-11-10 11:00:00','Física 2 aprobada',2),(3,'2020-07-11 10:00:00','2020-12-11 10:00:00','Matemática superior aprobada',3),(4,'2020-07-25 10:00:00','2020-12-25 10:00:00','Mayor de 25 años',3),(5,'2020-08-14 10:07:00','2020-12-31 10:07:00','Senior',4);
 /*!40000 ALTER TABLE `vacante` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +198,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-07-22 10:49:36
+-- Dump completed on 2020-08-06 10:21:07
