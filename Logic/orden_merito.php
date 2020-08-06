@@ -4,7 +4,7 @@
 <head>
     <?php
     session_start();
-    if (!isset($_SESSION['nombre_catedra']) or !isset($_SESSION['dni'])) {
+    if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
         header("Location: ../Logic/index.php");
     }
     include_once("../Logic/header.php");
@@ -15,7 +15,7 @@
     <?php
 
     $conn = include("conexion.php");
-    $nombre_catedra = $_SESSION['nombre_catedra'];
+    $legajo = $_SESSION['legajo'];
 
     $sentencia = "SELECT c.nombre_catedra, v.cod_vacante, v.fecha_hasta, v.info_general, p.dni, p.curriculum, p.cod_curriculum, p.puntaje
             FROM jefe_catedra jc
@@ -25,7 +25,7 @@
             ON c.cod_catedra = v.cod_catedra
             INNER JOIN postulacion p 
             ON p.cod_vacante = v.cod_vacante
-            WHERE c.nombre_catedra = '$nombre_catedra'
+            WHERE c.legajo = '$legajo'
             ORDER BY v.cod_vacante ASC, p.puntaje DESC, dni";
 
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
@@ -34,7 +34,7 @@
     <div class="container">
         <div class="form-group col-md-12">
             <br />
-            <h3>Orden de mérito de la cátedra <?php echo $nombre_catedra; ?></h3>
+            <h3>Orden de mérito de la cátedra</h3>
         </div>
         <form action="orden_merito2.php" method="post">
             <table class="table">

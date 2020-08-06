@@ -30,7 +30,7 @@
         $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
         $existe2 = mysqli_fetch_assoc($resultado2);
         if ($existe2) {
-            $_SESSION['nombre_catedra'] = $existe2['nombre_catedra'];
+            $_SESSION['legajo'] = $existe2['legajo'];
         }
 
         header("Location: ../Logic/index.php");

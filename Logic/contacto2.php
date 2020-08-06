@@ -18,7 +18,7 @@
 
             echo $asunto . " - " . $consulta . " - " . $nombre . " - " . $email;
 
-            $destinatario = "danidruetta_97@yopmail.com";
+            $destinatario = "danidruetta_97@hotmail.com";
             $headers = "From: " . $nombre . " <" . $email . ">\r\n";
 
             //mail($destinatario,$asunto,$consulta,$headers);

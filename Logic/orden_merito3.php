@@ -4,7 +4,7 @@
 <head>
     <?php
     session_start();
-    if (!isset($_SESSION['nombre_catedra']) or !isset($_SESSION['dni'])) {
+    if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
         header("Location: ../Logic/index.php");
     }
     //include_once("../Logic/header.php");
