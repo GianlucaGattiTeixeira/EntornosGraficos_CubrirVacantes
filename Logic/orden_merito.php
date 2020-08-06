@@ -17,6 +17,8 @@
     $conn = include("conexion.php");
     $legajo = $_SESSION['legajo'];
 
+    #consulta sql que traiga las cátedras que tienen postulaciones del legajo 
+
     $sentencia = "SELECT c.nombre_catedra, v.cod_vacante, v.fecha_hasta, v.info_general, p.dni, p.curriculum, p.cod_curriculum, p.puntaje
             FROM jefe_catedra jc
             INNER JOIN catedra c
@@ -32,56 +34,65 @@
 
     ?>
     <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h3>Orden de mérito de la cátedra</h3>
-        </div>
-        <form action="orden_merito2.php" method="post">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Cod vacante</th>
-                        <th scope="col">Dni postulante</th>                        
-                        <th scope="col">Nombre cátedra</th>
-                        <th scope="col">Fecha hasta</th>
-                        <th scope="col">Info general</th>
-                        <th scope="col">Curriculum</th>
-                        <th scope="col">Puntaje</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <?php
-                    while ($fila = mysqli_fetch_array($resultado)) {
-                    ?>
-                        <tr>
-                            <td><?php echo ($fila['cod_vacante']); ?></td>
-                            <td><?php echo ($fila['dni']); ?></td>
-                            <td><?php echo ($fila['nombre_catedra']); ?></td>
-                            <td><?php echo ($fila['fecha_hasta']); ?></td>
-                            <td><?php echo ($fila['info_general']); ?></td>
-                            <td><a class="linkcv" href="../Archivos/<?php $a = $fila['cod_curriculum'];
-                                                                    $b = $fila['curriculum'];
-                                                                    echo $a . $b; ?> " target="_blank"> Ver CV</a></td>
-                            <td><?php echo ($fila['puntaje']); ?></td>
-                            <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'] . $fila['cod_vacante']; ?>">Seleccionar</button></td>
-                        </tr>
-
-                    <?php
-                    }
-                    ?>
-
-
-                </tbody>
-            </table>
+        <form >
+            <select class="custom-select mr-sm-2" id="cateddra" name="catedra">
+                        <option selected="">Seleccione una cátedra</option>
+                        <!--hacer foreach de las postulaciones del legajo-->
+                        <option value="<!--id de la catedra-->"><!--nombre de la catedra--></option>
+            </select>
+            <button type="submit" class="btn btn-secondary">Buscar postulaciones</button>
         </form>
+    </div>
+    <div class="form-group col-md-12">
+        <br />
+        <h3>Orden de mérito de la cátedra</h3>
+    </div>
+    <form action="orden_merito2.php" method="post">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Cod vacante</th>
+                    <th scope="col">Dni postulante</th>
+                    <th scope="col">Nombre cátedra</th>
+                    <th scope="col">Fecha hasta</th>
+                    <th scope="col">Info general</th>
+                    <th scope="col">Curriculum</th>
+                    <th scope="col">Puntaje</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <?php
+                while ($fila = mysqli_fetch_array($resultado)) {
+                ?>
+                    <tr>
+                        <td><?php echo ($fila['cod_vacante']); ?></td>
+                        <td><?php echo ($fila['dni']); ?></td>
+                        <td><?php echo ($fila['nombre_catedra']); ?></td>
+                        <td><?php echo ($fila['fecha_hasta']); ?></td>
+                        <td><?php echo ($fila['info_general']); ?></td>
+                        <td><a class="linkcv" href="../Archivos/<?php $a = $fila['cod_curriculum'];
+                                                                $b = $fila['curriculum'];
+                                                                echo $a . $b; ?> " target="_blank"> Ver CV</a></td>
+                        <td><?php echo ($fila['puntaje']); ?></td>
+                        <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'] . $fila['cod_vacante']; ?>">Seleccionar</button></td>
+                    </tr>
+
+                <?php
+                }
+                ?>
 
 
-        <div class="form-group">
-            <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-        </div>
+            </tbody>
+        </table>
+    </form>
+
+
+    <div class="form-group">
+        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
+    </div>
     </div>
     <?php
     mysqli_free_result($resultado);
