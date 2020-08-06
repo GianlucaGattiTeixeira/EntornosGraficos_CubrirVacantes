@@ -57,11 +57,11 @@
                                 <td><?php echo ($fila['fecha_desde']); ?></td>
                                 <td><?php echo ($fila['fecha_hasta']); ?></td>
                                 <td><?php echo ($fila['info_general']); ?></td>
-                                <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo 'm' . $fila['cod_vacante']; ?>">Modificar</button></td>
-                                <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo 'b' . $fila['cod_vacante']; ?>">Eliminar</button></td>
+                                <td><button type="submit" class="btn btn-primary" style="background-color: #ADD8E6 !important;" name="seleccion" value="<?php echo 'm' . $fila['cod_vacante']; ?>">Modificar</button></td>
+                                <td><button type="submit" class="btn btn-primary" style="background-color: #FDBCB4 !important;" name="seleccion" value="<?php echo 'b' . $fila['cod_vacante']; ?>">Eliminar</button></td>
 
                             </tr>
-
+                            
                         <?php
                         }
 

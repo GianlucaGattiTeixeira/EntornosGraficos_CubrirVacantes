@@ -22,7 +22,7 @@
 			</div>
 
 			<div class="form-group">
-				<label for="inputContrasena" class="control-label col-md-2">Contrasena:</label>
+				<label for="inputContrasena" class="control-label col-md-2">Contraseña:</label>
 				<div class="col-md-10">
 					<input id="inputContrasena" name="contrasena" class="form-control" type="password">
 				</div>

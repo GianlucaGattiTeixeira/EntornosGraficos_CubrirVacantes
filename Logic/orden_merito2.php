@@ -26,7 +26,6 @@
     //echo (' - '.var_dump($cod_vacante));
 
     $conn = include("conexion.php");
-    $nombre_catedra = $_SESSION['nombre_catedra'];
 
     $sentencia = "SELECT v.cod_vacante, v.info_general, u.dni, u.nombre, u.apellido, u.email, p.puntaje, p.curriculum, p.cod_curriculum
                 FROM jefe_catedra jc
@@ -49,7 +48,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <br />
-                    <h3>Calificar postulación para la cátedra <?php echo $nombre_catedra; ?></h3>
+                    <h3>Calificar postulación</h3>
                     <br />
                 </div>
             </div>

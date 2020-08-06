@@ -24,15 +24,11 @@
         $cod_vacante = (int) $cod_vacante;
         //echo (' - '.var_dump($cod_vacante));
 
-
-
         $conn = include("conexion.php");
 
         if ($indice == 'b') {
-
             $sentencia = "DELETE FROM vacante WHERE cod_vacante = '$cod_vacante'";
             mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
         ?>
             <div class="container">
                 <div class="form-group col-md-12">
