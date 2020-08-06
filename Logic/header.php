@@ -31,6 +31,7 @@
         <li class="nav-item">
           <a class="nav-link" href="../Logic/vacantes.php">Listado Vacantes</a>
         </li>
+
         <?php
         if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
         ?>
@@ -46,6 +47,7 @@
         <?php
         }
         ?>
+
         <?php
         if (isset($_SESSION['es_admin']) and !isset($_SESSION['legajo'])) {
         ?>
@@ -65,6 +67,39 @@
         <?php
         }
         ?>
+        <?php //nuevo
+        if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
+        ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="catedraDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestión Cátedras
+            </a>
+            <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
+              <a class="dropdown-item" href="../Logic/alta_catedra.php">Alta Cátedra</a>
+              <a class="dropdown-item" href="../Logic/modificar_catedra.php">Modificar Cátedra</a>
+            </div>
+          </li>
+        <?php
+        }
+        ?>
+
+        <?php //nuevo
+        if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
+        ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="vacanteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestión Docentes
+            </a>
+            <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
+              <a class="dropdown-item" href="../Logic/alta_docente.php">Alta Docente</a>
+              <a class="dropdown-item" href="../Logic/modificar_docente.php">Modificar Docente</a>
+            </div>
+          </li>
+        <?php
+        }
+        ?>
+
+
         <li class="nav-item">
           <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
         </li>
@@ -97,7 +132,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="usuarioDropdown">
               <a class="dropdown-item" href="../Logic/modificar_usuario.php">Modificar Usuario</a>
-      <?php if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) { ?><a class="dropdown-item" href="../Logic/baja_usuario.php">Baja Usuario</a> <?php } ?>
+              <?php if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) { ?><a class="dropdown-item" href="../Logic/baja_usuario.php">Baja Usuario</a> <?php } ?>
             </div>
           </li>
 

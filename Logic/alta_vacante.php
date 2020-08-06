@@ -12,18 +12,28 @@
 </head>
 
 <body>
+	<?php
+	$conn = include("conexion.php");
+	$sentencia = "SELECT cod_catedra, nombre_catedra FROM catedra";
+	$resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+	?>
 	<div class="container">
 		<form action="../Logic/alta_vacante2.php" method="post">
 			<div class="form-group col-md-12">
 				<br />
 				<h3>Crear vacante</h3>
 			</div>
+
 			<div class="form-group">
-				<label class="control-label col-md-4">Codigo catedra:</label>
-				<div class="col-md-10">
-					<input name="cod_catedra" class="form-control" type="number" placeholder="">
-				</div>
-			</div>
+                <label for="inputCatedra" class="control-label col-md-2">Cátedra:</label>
+                <div class="col-md-10">
+                    <select name="cod_catedra" class="col-md-4">
+                        <?php while ($fila = mysqli_fetch_array($resultado)) { ?>
+                            <option value="<?= $fila['cod_catedra']; ?>"><?= $fila['nombre_catedra']?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+            </div>
 
 			<div class="form-group">
 				<label class="control-label col-md-2">Fecha desde:</label>
