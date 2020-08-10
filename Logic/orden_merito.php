@@ -61,7 +61,7 @@
     <?php
 
     if (isset($cod_catedra)) {
-        $sentencia = "SELECT c.nombre_catedra, v.cod_vacante, v.fecha_hasta, v.info_general, p.dni, p.curriculum, p.cod_curriculum, p.puntaje
+        $sentencia = "SELECT c.nombre_catedra, v.cod_vacante, v.fecha_hasta, v.info_general, v.envio_mail, p.dni, p.curriculum, p.cod_curriculum, p.puntaje
             FROM jefe_catedra jc
             INNER JOIN catedra c
             ON jc.legajo = c.legajo
@@ -90,6 +90,7 @@
                             <th scope="col">Curriculum</th>
                             <th scope="col">Puntaje</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -108,7 +109,14 @@
                                                                         $b = $fila['curriculum'];
                                                                         echo $a . $b; ?> " target="_blank"> Ver CV</a></td>
                                 <td><?php echo ($fila['puntaje']); ?></td>
-                                <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'] . $fila['cod_vacante']; ?>">Seleccionar</button></td>
+                                <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo 'c' . $fila['dni'] . $fila['cod_vacante']; ?>">Calificar</button></td>
+                                <td><?php if ($fila['envio_mail'] == 0) { ?>
+                                        <button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo 'e' . $fila['dni'] . $fila['cod_vacante']; ?>">Enviar mail</button>
+                                    <?php } else { ?>
+                                        <p>Mail enviado </p>
+                                    <?php } ?>
+
+                                </td>
                             </tr>
 
                         <?php
