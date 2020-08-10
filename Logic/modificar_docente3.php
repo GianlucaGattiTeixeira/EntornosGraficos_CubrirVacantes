@@ -14,28 +14,34 @@
 <body>
     <?php
 
-    $cod_vacante = $_SESSION['cod_vacante'];
-    $cod_catedra = $_POST['cod_catedra'];
-    $fecha_desde = $_POST['fecha_desde'];
-    $fecha_hasta = $_POST['fecha_hasta'];
-    $info_general = $_POST['info_general'];
+    $legajo = $_SESSION['legajo_modificar'];
+    $dni = $_SESSION['dni_modificar'];
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $email = $_POST['email'];
 
+    echo $legajo . ' - ' . $dni . ' - ' . $nombre . ' - ' . $apellido . ' - ' . $email;
 
     $conn = include("conexion.php");
-
     $sentencia =
-        "UPDATE vacante
-            SET cod_catedra='$cod_catedra', fecha_desde='$fecha_desde', fecha_hasta='$fecha_hasta', info_general='$info_general'
-            WHERE cod_vacante='$cod_vacante'";
+        "UPDATE jefe_catedra
+            SET dni='$dni', nombre='$nombre', apellido='$apellido', email='$email'
+            WHERE legajo='$legajo'";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
 
+    $sentencia2 = 
+        "UPDATE usuario 
+            SET nombre='$nombre', apellido='$apellido', email='$email'
+            WHERE dni='$dni'";
+
+    mysqli_query($link, $sentencia2) or die(mysqli_error($link));
     ?>
     <div class="container">
         <div class="form-group col-md-12">
             <br />
-            <h5>La vacante fue modificada</h5>
+            <h5>La jefe de cátedra fue modificado</h5>
         </div>
 
         <div class="form-group">
@@ -45,8 +51,6 @@
         </div>
     </div>
     <?php
-
-    mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>
