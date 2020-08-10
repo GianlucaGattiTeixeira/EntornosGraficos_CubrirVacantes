@@ -25,7 +25,7 @@
     $conn = include("conexion.php");
     $sentencia =
         "UPDATE jefe_catedra
-            SET dni='$dni', nombre='$nombre', apellido='$apellido', email='$email'
+            SET nombre='$nombre', apellido='$apellido', email='$email'
             WHERE legajo='$legajo'";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));

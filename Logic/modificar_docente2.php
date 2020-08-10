@@ -23,6 +23,8 @@
     $fila = mysqli_fetch_array($resultado);
     $_SESSION['legajo_modificar'] = $fila['legajo'];
     $_SESSION['dni_modificar'] = $fila['dni'];
+
+    echo $fila['legajo'] . ' - ' . $fila['dni'] . ' - ' . $fila['nombre'] . ' - ' . $fila['apellido'] . ' - ' . $fila['email'];
     ?>
 
     <div class="container">
