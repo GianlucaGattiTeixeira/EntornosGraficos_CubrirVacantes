@@ -50,7 +50,7 @@
                             <td><?php echo ($fila['fecha_desde']); ?></td>
                             <td><?php echo ($fila['fecha_hasta']); ?></td>
                             <td><?php echo ($fila['info_general']); ?></td>
-                            <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['cod_vacante']; ?>">Seleccionar</button></td>
+                            <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['cod_vacante']; ?>">Postularse</button></td>
 
                         </tr>
 
