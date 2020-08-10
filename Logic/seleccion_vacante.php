@@ -57,7 +57,7 @@
 
                 <div class="form-group">
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <button type="submit" class="btn btn-primary">Postularse</button>
                     </div>
                 </div>
             </form>

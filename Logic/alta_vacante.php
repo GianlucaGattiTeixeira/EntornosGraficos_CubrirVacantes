@@ -25,34 +25,37 @@
 			</div>
 
 			<div class="form-group">
-                <label for="inputCatedra" class="control-label col-md-2">Cátedra:</label>
-                <div class="col-md-10">
-                    <select name="cod_catedra" class="col-md-4">
-                        <?php while ($fila = mysqli_fetch_array($resultado)) { ?>
-                            <option value="<?= $fila['cod_catedra']; ?>"><?= $fila['nombre_catedra']?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-            </div>
-
-			<div class="form-group">
-				<label class="control-label col-md-2">Fecha desde:</label>
-				<div class="col-md-10">
-					<input name="fecha_desde" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+				<label for="inputCatedra" class="control-label col-md-2">Cátedra:</label>
+				<div class="col-md-12">
+					<select class="custom-select mr-sm-22" name="cod_catedra" class="col-md-4">
+						<?php while ($fila = mysqli_fetch_array($resultado)) { ?>
+							<option value="<?= $fila['cod_catedra']; ?>"><?= $fila['nombre_catedra'] ?></option>
+						<?php } ?>
+					</select>
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label class="control-label col-md-2">Fecha hasta:</label>
-				<div class="col-md-10">
-					<input name="fecha_hasta" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="control-label col-md-12">Fecha desde:</label>
+					<div class="col-md-12">
+						<input name="fecha_desde" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="control-label col-md-12">Fecha hasta:</label>
+					<div class="col-md-12">
+						<input name="fecha_hasta" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+					</div>
 				</div>
 			</div>
 
-			<div class="form-group">
-				<label class="control-label col-md-2">Informacion:</label>
-				<div class="col-md-10">
-					<input name="info_general" class="form-control" type="text" placeholder="">
+			<div class="form-row">
+				<div class="form-group col-md-12">
+					<label class="control-label col-md-12">Informacion:</label>
+					<div class="col-md-12">
+						<input name="info_general" class="form-control" type="text" placeholder="">
+					</div>
 				</div>
 			</div>
 
