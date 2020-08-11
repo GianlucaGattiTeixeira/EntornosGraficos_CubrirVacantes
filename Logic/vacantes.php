@@ -35,7 +35,11 @@
                         <th scope="col">Fecha desde</th>
                         <th scope="col">Fecha hasta</th>
                         <th scope="col">Informacion</th>
-                        <th scope="col"></th>
+                        <?php
+                        if (!isset($_SESSION['legajo'])) {
+                            echo '<th scope="col"></th>';
+                        }
+                        ?>                        
                     </tr>
                 </thead>
 
@@ -51,8 +55,8 @@
                             <td><?php echo ($fila['fecha_hasta']); ?></td>
                             <td><?php echo ($fila['info_general']); ?></td>
                             <?php
-                             if (!isset($_SESSION['legajo'])) {
-                                echo '<td><button type="submit" class="btn btn-primary" name="seleccion" value="'.$fila['cod_vacante'].'">Postularse</button></td>';
+                            if (!isset($_SESSION['legajo'])) {
+                                echo '<td><button type="submit" class="btn btn-primary" name="seleccion" value="' . $fila['cod_vacante'] . '">Postularse</button></td>';
                             }
                             ?>
 
