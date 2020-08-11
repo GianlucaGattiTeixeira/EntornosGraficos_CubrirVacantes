@@ -78,11 +78,6 @@
                 </tbody>
             </table>
         </form>
-
-
-        <div class="form-group">
-            <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-        </div>
     </div>
     <?php
     include_once("../Logic/footer.php");

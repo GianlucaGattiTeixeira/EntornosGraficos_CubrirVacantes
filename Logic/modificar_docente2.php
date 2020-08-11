@@ -23,8 +23,6 @@
     $fila = mysqli_fetch_array($resultado);
     $_SESSION['legajo_modificar'] = $fila['legajo'];
     $_SESSION['dni_modificar'] = $fila['dni'];
-
-    echo $fila['legajo'] . ' - ' . $fila['dni'] . ' - ' . $fila['nombre'] . ' - ' . $fila['apellido'] . ' - ' . $fila['email'];
     ?>
 
     <div class="container">
@@ -35,31 +33,35 @@
                 <h5>Datos actuales</h5>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Legajo:</label>
-                <div class="col-md-12">
-                    <input name="legajo" class="form-control" type="number" value="<?php echo $fila['legajo'] ?>" disabled>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Legajo:</label>
+                    <div class="col-md-12">
+                        <input name="legajo" class="form-control" type="number" value="<?php echo $fila['legajo'] ?>" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">DNI:</label>
+                    <div class="col-md-12">
+                        <input name="dni" class="form-control" type="number" value="<?php echo $fila['dni'] ?>" disabled>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">DNI:</label>
-                <div class="col-md-12">
-                    <input name="dni" class="form-control" type="number" value="<?php echo $fila['dni'] ?>" disabled>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Nombre:</label>
+                    <div class="col-md-12">
+                        <input name="nombre" class="form-control" type="text" value="<?php echo $fila['nombre'] ?>">
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Nombre:</label>
-                <div class="col-md-12">
-                    <input name="nombre" class="form-control" type="text" value="<?php echo $fila['nombre'] ?>">
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label col-md-2">Apellido:</label>
-                <div class="col-md-12">
-                    <input name="apellido" class="form-control" type="text" value="<?php echo $fila['apellido'] ?>">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Apellido:</label>
+                    <div class="col-md-12">
+                        <input name="apellido" class="form-control" type="text" value="<?php echo $fila['apellido'] ?>">
+                    </div>
                 </div>
             </div>
 

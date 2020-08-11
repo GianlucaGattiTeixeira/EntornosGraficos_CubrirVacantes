@@ -49,41 +49,47 @@
                 <h5>Datos actuales</h5>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-4">Codigo cátedra:</label>
-                <div class="col-md-12">
-                    <input name="cod_catedra" class="form-control" type="number" value="<?php echo $fila['cod_catedra'] ?>" disabled>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-4">Codigo cátedra:</label>
+                    <div class="col-md-12">
+                        <input name="cod_catedra" class="form-control" type="number" value="<?php echo $fila['cod_catedra'] ?>" disabled>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Catedra:</label>
-                <div class="col-md-12">
-                    <input name="nombre_catedra" class="form-control" type="text" value="<?php echo $fila['nombre_catedra'] ?>">
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label class="control-label col-md-2">Catedra:</label>
+                    <div class="col-md-12">
+                        <input name="nombre_catedra" class="form-control" type="text" value="<?php echo $fila['nombre_catedra'] ?>">
+                    </div>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Jefe de cátedra:</label>
-                <div class="col-md-12">
-                    <select name="legajo" class="col-md-4">
-                        <option value="<?= $fila['legajo']; ?>" selected="true"><?= $fila['nombre'] . " " . $fila['apellido']; ?></option>
-                        <?php while ($fila2 = mysqli_fetch_array($resultado2)) { ?>
-                            <option value="<?= $fila2['legajo']; ?>"><?= $fila2['nombre'] . " " . $fila2['apellido']; ?></option>
-                        <?php } ?>
-                    </select>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Jefe de cátedra:</label>
+                    <div class="col-md-12">
+                        <select name="legajo" class="custom-select mr-sm-22">
+                            <option value="<?= $fila['legajo']; ?>" selected="true"><?= $fila['nombre'] . " " . $fila['apellido']; ?></option>
+                            <?php while ($fila2 = mysqli_fetch_array($resultado2)) { ?>
+                                <option value="<?= $fila2['legajo']; ?>"><?= $fila2['nombre'] . " " . $fila2['apellido']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label class="control-label col-md-2">Departamento:</label>
-                <div class="col-md-12">
-                    <select name="cod_departamento" class="form-group col-md-4">
-                        <option value="<?= $fila['cod_departamento']; ?>" selected="true"><?= $fila['nombre_departamento']; ?></option>
-                        <?php while ($fila3 = mysqli_fetch_array($resultado3)) { ?>
-                            <option value="<?= $fila3['cod_departamento']; ?>"><?= $fila3['nombre']; ?></option>
-                        <?php } ?>
-                    </select>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Departamento:</label>
+                    <div class="col-md-12">
+                        <select name="cod_departamento" class="custom-select mr-sm-22">
+                            <option value="<?= $fila['cod_departamento']; ?>" selected="true"><?= $fila['nombre_departamento']; ?></option>
+                            <?php while ($fila3 = mysqli_fetch_array($resultado3)) { ?>
+                                <option value="<?= $fila3['cod_departamento']; ?>"><?= $fila3['nombre']; ?></option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
             </div>
 
