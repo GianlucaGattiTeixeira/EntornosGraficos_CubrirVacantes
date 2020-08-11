@@ -61,8 +61,8 @@
                             <td><?php echo ($fila['cod_curriculum']); ?></td>
                             <td><a class="linkcv" href="../Archivos/<?php $a = $fila['cod_curriculum'];
                                                                     $b = $fila['curriculum'];
-                                                                    echo $a . $b; ?> " target="_blank">Ver CV</a></td>
-                            <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['dni'] . $fila['fecha_hora'] . $fila['cod_vacante']; ?>">Eliminar</button></td>
+                                                                    echo $a . $b; ?> " target="_blank"><img src="../Imagenes/Ver.svg"/>Ver CV</a></td>
+                            <td><button type="submit" style="color: red;"class="btn btn btn-outline-danger" name="seleccion" value="<?php echo $fila['dni'] . $fila['fecha_hora'] . $fila['cod_vacante']; ?>"><img src="../Imagenes/Borrar.svg"/> Eliminar</button></td>
                         </tr>
 
                     <?php

@@ -53,7 +53,7 @@
                                 <td><?php echo ($fila['nombre_catedra']); ?></td>
                                 <td><?php echo ($fila['nombre']) . ' ' . ($fila['apellido']); ?></td>
                                 <td><?php echo ($fila['nombre_departamento']); ?></td>
-                                <td><button type="submit" class="btn btn-primary" style="background-color: #ADD8E6 !important;" name="seleccion" value="<?php echo $fila['cod_catedra']; ?>">Modificar</button></td>
+                                <td><button type="submit" class="btn btn-outline-info" style="color:blue ;" name="seleccion" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/Modificar.svg"/> Modificar</button></td>
                             </tr>
 
                         <?php
