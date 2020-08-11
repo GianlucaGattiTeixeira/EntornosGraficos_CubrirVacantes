@@ -66,32 +66,36 @@
                         <h5>Datos actuales</h5>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-4">Codigo vacante:</label>
-                        <div class="col-md-12">
-                            <input name="cod_vacante" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" disabled>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-12">Codigo vacante:</label>
+                            <div class="col-md-12">
+                                <input name="cod_vacante" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-12">Catedra:</label>
+                            <div class="col-md-12">
+                                <input name="cod_catedra" class="form-control" type="number" value="<?php echo $fila['cod_catedra'] ?>">
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Catedra:</label>
-                        <div class="col-md-12">
-                            <input name="cod_catedra" class="form-control" type="number" value="<?php echo $fila['cod_catedra'] ?>">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Fecha desde:</label>
+                    <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="control-label col-md-12">Fecha desde:</label>
                         <div class="col-md-12">
                             <input name="fecha_desde" class="form-control" type="datetime" value="<?php echo $fila['fecha_desde'] ?>">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-2">Fecha hasta:</label>
+                    <div class="form-group col-md-6">
+                        <label class="control-label col-md-12">Fecha hasta:</label>
                         <div class="col-md-12">
                             <input name="fecha_hasta" class="form-control" type="datetime" value="<?php echo $fila['fecha_hasta'] ?>">
                         </div>
+                    </div>
                     </div>
 
                     <div class="form-group">
@@ -104,7 +108,6 @@
                     <div class="form-group">
                         <div class="col-md-8">
                             <button type="submit" class="btn btn-primary">Ingresar</button>
-                            <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
                         </div>
                     </div>
                 </form>

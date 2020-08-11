@@ -50,7 +50,11 @@
                             <td><?php echo ($fila['fecha_desde']); ?></td>
                             <td><?php echo ($fila['fecha_hasta']); ?></td>
                             <td><?php echo ($fila['info_general']); ?></td>
-                            <td><button type="submit" class="btn btn-primary" name="seleccion" value="<?php echo $fila['cod_vacante']; ?>">Postularse</button></td>
+                            <?php
+                             if (!isset($_SESSION['legajo'])) {
+                                echo '<td><button type="submit" class="btn btn-primary" name="seleccion" value="'.$fila['cod_vacante'].'">Postularse</button></td>';
+                            }
+                            ?>
 
                         </tr>
 
@@ -67,11 +71,6 @@
                 </tbody>
             </table>
         </form>
-
-
-        <div class="form-group">
-            <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-        </div>
     </div>
     <?php
     include_once("../Logic/footer.php");
