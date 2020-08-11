@@ -49,7 +49,7 @@
                                 <td><?php echo ($fila['nombre']); ?></td>
                                 <td><?php echo ($fila['apellido']); ?></td>
                                 <td><?php echo ($fila['email']); ?></td>
-                                <td><button type="submit" class="btn btn-primary" style="background-color: #ADD8E6 !important;" name="seleccion" value="<?php echo $fila['legajo']; ?>">Modificar</button></td>
+                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['legajo']; ?>"><img src="../Imagenes/Modificar.svg"/>Modificar</button></td>
                             </tr>
 
                         <?php
