@@ -22,6 +22,7 @@
     $contrasena = $_POST['contrasena'];
     $direccion = $_POST['direccion'];
     $ciudad = $_POST['ciudad'];
+    $provincia= $_POST['provincia'];
     /*
 echo $dni;
 echo $nombre;
@@ -36,7 +37,7 @@ echo $ciudad;
 
     $sentencia =
         "UPDATE usuario
-            SET dni='$dni', nombre='$nombre', apellido='$apellido', email='$email', usuario='$usuario', contrasena='$contrasena', direccion='$direccion', ciudad='$ciudad'
+            SET dni='$dni', nombre='$nombre', apellido='$apellido', email='$email', usuario='$usuario', contrasena='$contrasena', direccion='$direccion', ciudad='$ciudad', provincia='$provincia'
             WHERE dni='$dni'";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));

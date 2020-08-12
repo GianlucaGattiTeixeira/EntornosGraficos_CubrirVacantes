@@ -19,6 +19,7 @@
     $email = $_POST['email'];
     $direccion = $_POST['direccion'];
     $ciudad = $_POST['ciudad'];
+    $provincia = $_POST['provincia'];
 
     $conn = include("conexion.php");
 
@@ -64,8 +65,8 @@
             </div>
         <?php
         } else {
-            $sentencia = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,direccion,ciudad,es_admin) 
-                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','$direccion','$ciudad','0')";
+            $sentencia = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,direccion,ciudad,provincia,es_admin) 
+                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','$direccion','$ciudad','$provincia','0')";
 
             mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
