@@ -5,6 +5,7 @@
 	<?php
 	include_once("../Logic/header.php");
 	?>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 
 <body>
@@ -23,8 +24,9 @@
 
 			<div class="form-group">
 				<label for="inputContrasena" class="control-label col-md-2">Contraseña:</label>
-				<div class="col-md-10">
+				<div class="col-md-10" style="display: flex;">
 					<input id="inputContrasena" name="contrasena" class="form-control" type="password">
+					<i style="margin:10px" id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
 				</div>
 			</div>
 
@@ -37,6 +39,21 @@
 
 		</form>
 	</div>
+	<script>
+		function viewPassword() {
+			var passwordInput = document.getElementById('inputContrasena');
+			var passStatus = document.getElementById('pass-status');
+
+			if (passwordInput.type == 'password') {
+				passwordInput.type = 'text';
+				passStatus.className = 'fa fa-eye-slash';
+
+			} else {
+				passwordInput.type = 'password';
+				passStatus.className = 'fa fa-eye';
+			}
+		}
+	</script>
 	<?php
 	include_once("../Logic/footer.php");
 	?>

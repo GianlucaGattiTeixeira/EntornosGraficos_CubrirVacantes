@@ -5,8 +5,8 @@
 	<?php
 	include_once("../Logic/header.php");
 	?>
-
 	<script type="text/javascript" src="jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 
 <body>
@@ -59,8 +59,9 @@
 
 				<div class="form-group col-md-4">
 					<label for="inputContrasena" class="control-label col-md-2">Contrasena:</label>
-					<div class="col-md-12">
+					<div class="col-md-12" style="display: flex;">
 						<input id="inputContrasena" name="contrasena" class="form-control" type="password">
+						<i style="margin:10px" id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
 					</div>
 				</div>
 
@@ -108,6 +109,21 @@
 
 		</form>
 	</div>
+	<script>
+		function viewPassword() {
+			var passwordInput = document.getElementById('inputContrasena');
+			var passStatus = document.getElementById('pass-status');
+
+			if (passwordInput.type == 'password') {
+				passwordInput.type = 'text';
+				passStatus.className = 'fa fa-eye-slash';
+
+			} else {
+				passwordInput.type = 'password';
+				passStatus.className = 'fa fa-eye';
+			}
+		}
+	</script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#state_id").change(function() {
