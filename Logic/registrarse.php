@@ -6,7 +6,6 @@
 	include_once("../Logic/header.php");
 	?>
 	<script type="text/javascript" src="jquery.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
 
 <body>
@@ -61,7 +60,7 @@
 					<label for="inputContrasena" class="control-label col-md-2">Contrasena:</label>
 					<div class="col-md-12" style="display: flex;">
 						<input id="inputContrasena" name="contrasena" class="form-control" type="password">
-						<i style="margin:10px" id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
+						<a onClick="viewPassword()"><img src="https://static.thenounproject.com/png/1446378-200.png" width="30px" style="margin-left:10px;margin-top:5px;"/></a>
 					</div>
 				</div>
 
