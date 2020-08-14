@@ -60,7 +60,7 @@
 					<label for="inputContrasena" class="control-label col-md-2">Contrasena:</label>
 					<div class="col-md-12" style="display: flex;">
 						<input id="inputContrasena" name="contrasena" class="form-control" type="password">
-						<a onClick="viewPassword()"><img src="https://static.thenounproject.com/png/1446378-200.png" width="30px" style="margin-left:10px;margin-top:5px;"/></a>
+						<a onClick="viewPassword()"><img src="../Imagenes/showhidepassword.png" width="30px" style="margin-left:10px;margin-top:5px;"/></a>
 					</div>
 				</div>
 
