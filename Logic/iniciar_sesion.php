@@ -25,7 +25,7 @@
 				<label for="inputContrasena" class="control-label col-md-2">Contraseña:</label>
 				<div class="col-md-10" style="display: flex;">
 					<input id="inputContrasena" name="contrasena" class="form-control" type="password">
-					<a onClick="viewPassword()"><img src="../Imagenes/showhidepassword.png" width="30px" style="margin-left:10px;margin-top:5px;margin-right:-12px"/></a>
+					<a onClick="viewPassword()"><img src="../Imagenes/showhidepassword.png" width="30px" style="margin-left:10px;margin-top:5px;"/></a>
 				</div>
 			</div>
 
