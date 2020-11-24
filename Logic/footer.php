@@ -43,6 +43,14 @@
     </div>
     <hr>
     </hr>
+    <div align=center>
+      <img src="../Imagenes/Logo_UTN.jpg" alt="UTN" width=5% HSPACE="10">
+      <img src="../Imagenes/Logo_Facebook.png" alt="Facebook" width=5% HSPACE="10">
+      <img src="../Imagenes/Logo_Microsoft.png" alt="Microsoft" width=5% HSPACE="10">
+      <img src="../Imagenes/Logo_Google.jpg" alt="Google" width=5% HSPACE="10">
+      <img src="../Imagenes/Logo_IBM.png" alt="IBM" width=5% HSPACE="10">
+      <img src="../Imagenes/Logo_Salesforce.png" alt="Salesforce" width=5% HSPACE="10">
+    </div>
   </footer>
 
 </body>
