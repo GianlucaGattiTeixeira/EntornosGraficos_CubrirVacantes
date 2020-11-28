@@ -1,6 +1,7 @@
-<html>
+<html lang="es">
 
 <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <?php
     session_start();
     if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
