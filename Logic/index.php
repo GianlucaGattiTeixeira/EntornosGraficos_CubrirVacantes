@@ -37,29 +37,9 @@
 
 <body>
   <br>
-  <div align="center">
-    <div class="fila">
-      <div class="columna" vertical-align=center>
-        <img class="a" src="../Imagenes/Logo_UTN.jpg" alt="UTN">
-      </div>
-      <div class="columna">
-        <img class="a" src="../Imagenes/Logo_Facebook.png" alt="Facebook">
-      </div>
-      <div class="columna">
-        <img class="a" src="../Imagenes/Logo_Microsoft.png" alt="Microsoft">
-      </div>
-    </div>
-    <br>
-    <div class="fila">
-      <div class="columna">
-        <img class="a" src="../Imagenes/Logo_Google.jpg" alt="Google">
-      </div>
-      <div class="columna">
-        <img class="a" src="../Imagenes/Logo_IBM.png" alt="IBM">
-      </div>
-      <div class="columna">
-        <img class="a" src="../Imagenes/Logo_Salesforce.png" alt="Salesforce">
-      </div>
+  <div align="center" vertical-align="center">
+    <div class="fila" style="margin-top: 120px;">
+        <a href="https://www.frro.utn.edu.ar/" target="_blanck"><img class="a" src="../Imagenes/Logo_UTN.png" alt="UTN" width="1000px" height="200px"></a>
     </div>
   </div>
   <br>

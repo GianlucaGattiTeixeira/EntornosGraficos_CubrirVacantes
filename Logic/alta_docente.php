@@ -28,7 +28,7 @@
                 <div class="form-group col-md-12">
                     <label for="inputLegajo" class="control-label col-md-2">Legajo:</label>
                     <div class="col-md-12">
-                        <input name="legajo" class="form-control" type="number" placeholder="" required>
+                        <input id="legajo" name="legajo" class="form-control" type="number" placeholder="" required>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
 
             <div class="form-group">
                 <div class="col-md-2">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary" onclick="return validacion_registro();">Ingresar</button>
                 </div>
             </div>
         </form>

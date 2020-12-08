@@ -30,21 +30,21 @@
 				<div class="form-group col-md-4">
 					<label for="inputDni" class="control-label col-md-2">DNI:</label>
 					<div class="col-md-12">
-						<input id="inputDni" name="dni" class="form-control" type="number" placeholder="">
+						<input id="inputDni" name="dni" class="form-control" type="number" placeholder="" required>
 					</div>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="inputNombre" class="control-label col-md-2">Nombre:</label>
 					<div class="col-md-12">
-						<input id="inputNombre" name="nombre" class="form-control" type="text" placeholder="">
+						<input id="inputNombre" name="nombre" class="form-control" type="text" placeholder="" required>
 					</div>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="inputApellido" class="control-label col-md-2">Apellido:</label>
 					<div class="col-md-12">
-						<input id="inputApellido" name="apellido" class="form-control" type="text" placeholder="">
+						<input id="inputApellido" name="apellido" class="form-control" type="text" placeholder="" required>
 					</div>
 				</div>
 			</div>
@@ -53,14 +53,14 @@
 				<div class="form-group col-md-4">
 					<label for="inputUsuario" class="control-label col-md-2">Usuario:</label>
 					<div class="col-md-12">
-						<input id="inputUsuario" name="usuario" class="form-control" type="text" placeholder="">
+						<input id="inputUsuario" name="usuario" class="form-control" type="text" placeholder="" required>
 					</div>
 				</div>
 
 				<div class="form-group col-md-4">
 					<label for="inputContrasena" class="control-label col-md-2">Contrasena:</label>
 					<div class="col-md-12" style="display: flex;">
-						<input id="inputContrasena" name="contrasena" class="form-control" type="password">
+						<input id="inputContrasena" name="contrasena" class="form-control" type="password" required>
 						<a onClick="viewPassword()"><img src="../Imagenes/showhidepassword.png" width="30px" style="margin-left:10px;margin-top:5px;"/></a>
 					</div>
 				</div>
@@ -68,7 +68,7 @@
 				<div class="form-group col-md-4">
 					<label for="inputEmail" class="control-label col-md-2">Email:</label>
 					<div class="col-md-12">
-						<input id="inputEmail" name="email" class="form-control" type="email" placeholder="">
+						<input id="inputEmail" name="email" class="form-control" type="email" placeholder="" required>
 					</div>
 				</div>
 			</div>
@@ -96,14 +96,14 @@
 				<div class="form-group col-md-4">
 					<label for="inputDireccion" class="control-label col-md-2">Direccion:</label>
 					<div class="col-md-12">
-						<input id="inputDireccion" name="direccion" class="form-control" type="text" placeholder="Calle-Nro-Piso-Depto">
+						<input id="inputDireccion" name="direccion" class="form-control" type="text" placeholder="Calle-Nro-Piso-Depto" required>
 					</div>
 				</div>
 			</div>
 			<br>
 			<div class="form-group">
 				<div class="col-md-2">
-					<button type="submit" class="btn btn-primary">Registrarse</button>
+					<button type="submit" class="btn btn-primary" onclick="return validacion_registro();">Registrarse</button>
 				</div>
 			</div>
 

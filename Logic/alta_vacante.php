@@ -40,13 +40,13 @@
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-12">Fecha desde:</label>
 					<div class="col-md-12">
-						<input name="fecha_desde" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+						<input id="fecha_desde" name="fecha_desde" class="form-control" type="date" placeholder="AAAA-MM-DD" required>
 					</div>
 				</div>
 				<div class="form-group col-md-6">
 					<label class="control-label col-md-12">Fecha hasta:</label>
 					<div class="col-md-12">
-						<input name="fecha_hasta" class="form-control" type="datetime-local" placeholder="AAAA-MM-DD HH:MM:SS">
+						<input id="fecha_hasta" name="fecha_hasta" class="form-control" type="date" placeholder="AAAA-MM-DD" required>
 					</div>
 				</div>
 			</div>
@@ -55,14 +55,14 @@
 				<div class="form-group col-md-12">
 					<label class="control-label col-md-12">Informacion:</label>
 					<div class="col-md-12">
-						<input name="info_general" class="form-control" type="text" placeholder="">
+						<input id="info_general" name="info_general" class="form-control" type="text" placeholder="">
 					</div>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-md-2">
-					<button type="submit" class="btn btn-primary">Ingresar</button>
+					<button type="submit" class="btn btn-primary" onclick="return validacion_alta_vacante();">Ingresar</button>
 				</div>
 			</div>
 
