@@ -2,19 +2,19 @@ function validacion_registro(){
     if(document.getElementById('inputDni')){
         var dni = document.getElementById('inputDni').value;
     }
-    if(document.getElementById('inputNombre').value){
+    if(document.getElementById('inputNombre')){
         var nombre = document.getElementById('inputNombre').value
     }
-    if(document.getElementById('inputApellido').value){
+    if(document.getElementById('inputApellido')){
         var apellido = document.getElementById('inputApellido').value
     }
-    if(document.getElementById('inputUsuario').value){
+    if(document.getElementById('inputUsuario')){
         var usuario = document.getElementById('inputUsuario').value
     }
-    if(document.getElementById('inputContrasena').value){
+    if(document.getElementById('inputContrasena')){
         var contrasena = document.getElementById('inputContrasena').value
     }
-    if(document.getElementById('inputEmail').value){
+    if(document.getElementById('inputEmail')){
         var email = document.getElementById('inputEmail').value
     }
     if (document.getElementById('inputDireccion')){

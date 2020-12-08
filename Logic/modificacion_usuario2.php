@@ -64,21 +64,21 @@
                 <div class="form-group col-md-6">
                     <label class="control-label col-md-12">Usuario:</label>
                     <div class="col-md-12">
-                        <input name="usuario" class="form-control" type="text" value="<?php echo $fila['usuario'] ?>">
+                        <input name="usuario" id="inputUsuario" class="form-control" type="text" value="<?php echo $fila['usuario'] ?>">
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
                     <label class="control-label col-md-12">Contraseña:</label>
                     <div class="col-md-12">
-                        <input name="contrasena" class="form-control" type="text" value="<?php echo $fila['contrasena'] ?>">
+                        <input name="contrasena" id="inputContrasena" class="form-control" type="text" value="<?php echo $fila['contrasena'] ?>">
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-8">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary" onclick="return validacion_registro();">Ingresar</button>
                     <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
                 </div>
             </div>
