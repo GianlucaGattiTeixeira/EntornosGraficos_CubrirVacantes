@@ -16,26 +16,24 @@
     <?php
     $conn = include("conexion.php");
 
-    $sentencia = "SELECT * FROM jefe_catedra";
+    $sentencia = "SELECT * FROM usuario";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
     ?>
     <div class="container">
         <div class="form-group col-md-12">
             <br />
-            <h3>Modificar jefe de cátedra</h3>
+            <h3>Modificar usuario</h3>
         </div>
 
         <div class="container">
-            <form action="modificar_docente2.php" method="post">
+            <form action="modificacion_usuario2.php" method="post">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Legajo</th>
                             <th scope="col">DNI</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
-                            <th scope="col">Email</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -45,12 +43,10 @@
                         while ($fila = mysqli_fetch_array($resultado)) {
                         ?>
                             <tr>
-                                <td><?php echo ($fila['legajo']); ?></td>
                                 <td><?php echo ($fila['dni']); ?></td>
                                 <td><?php echo ($fila['nombre']); ?></td>
                                 <td><?php echo ($fila['apellido']); ?></td>
-                                <td><?php echo ($fila['email']); ?></td>
-                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['legajo']; ?>"><img src="../Imagenes/Modificar.svg"/>Modificar</button></td>
+                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/Modificar.svg"/>Modificar</button></td>
                             </tr>
 
                         <?php

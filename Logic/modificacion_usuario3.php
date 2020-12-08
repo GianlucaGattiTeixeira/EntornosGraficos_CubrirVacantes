@@ -15,34 +15,27 @@
 <body>
     <?php
 
-    $legajo = $_SESSION['legajo_modificar'];
-    $dni = $_SESSION['dni_modificar'];
+    $dni = $_POST['dni'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
-    $email = $_POST['email'];
+    $usuario = $_POST['usuario'];
+    $contrasena = $_POST['contrasena'];
 
-    //echo $legajo . ' - ' . $dni . ' - ' . $nombre . ' - ' . $apellido . ' - ' . $email;
+    //echo $dni . ' - ' . $nombre . ' - ' . $apellido . ' - ' . $usuario. ' - ' . $contrasena;
 
     $conn = include("conexion.php");
     $sentencia =
-        "UPDATE jefe_catedra
-            SET nombre='$nombre', apellido='$apellido', email='$email'
-            WHERE legajo='$legajo'";
+        "UPDATE usuario
+            SET usuario='$usuario', contrasena='$contrasena'
+            WHERE dni='$dni'";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
-
-    $sentencia2 = 
-        "UPDATE usuario 
-            SET nombre='$nombre', apellido='$apellido', email='$email'
-            WHERE dni='$dni'";
-
-    mysqli_query($link, $sentencia2) or die(mysqli_error($link));
     ?>
     <div class="container">
         <div class="form-group col-md-12">
             <br />
-            <h5>La jefe de cátedra fue modificado</h5>
+            <h5>El usuario fue modificado</h5>
         </div>
 
         <div class="form-group">

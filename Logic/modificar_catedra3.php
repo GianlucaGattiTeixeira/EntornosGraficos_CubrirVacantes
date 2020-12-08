@@ -20,7 +20,7 @@
     $legajo = $_POST['legajo'];
     $cod_departamento = $_POST['cod_departamento'];
 
-    echo $cod_catedra . ' - ' . $nombre_catedra . ' - ' . $legajo . ' - ' .  $cod_departamento;
+    //echo $cod_catedra . ' - ' . $nombre_catedra . ' - ' . $legajo . ' - ' .  $cod_departamento;
 
 
     $conn = include("conexion.php");

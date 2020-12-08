@@ -101,6 +101,21 @@
         }
         ?>
 
+        <?php //nuevo
+        if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
+        ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="vacanteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Gestión Usuarios
+            </a>
+            <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
+              <a class="dropdown-item" href="../Logic/modificacion_usuario.php">Modificar Usuario</a>
+            </div>
+          </li>
+        <?php
+        }
+        ?>
+
 
         <li class="nav-item">
           <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
