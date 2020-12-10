@@ -49,7 +49,6 @@
         <?php
         }
         ?>
-
         <?php
         if (isset($_SESSION['es_admin']) and !isset($_SESSION['legajo'])) {
         ?>
@@ -69,7 +68,7 @@
         <?php
         }
         ?>
-        <?php //nuevo
+        <?php
         if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
         ?>
           <li class="nav-item dropdown">
@@ -81,13 +80,8 @@
               <a class="dropdown-item" href="../Logic/modificar_catedra.php">Modificar Cátedra</a>
             </div>
           </li>
-        <?php
-        }
-        ?>
-
-        <?php //nuevo
-        if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
-        ?>
+        <?php}?>
+        <?phpif (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="vacanteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Gestión Docentes
@@ -100,8 +94,7 @@
         <?php
         }
         ?>
-
-        <?php //nuevo
+        <?php
         if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
         ?>
           <li class="nav-item dropdown">
@@ -115,12 +108,9 @@
         <?php
         }
         ?>
-
-
         <li class="nav-item">
           <a class="nav-link" href="../Logic/contacto.php">Contacto</a>
         </li>
-
         <?php
         if (isset($_SESSION['legajo'])) {
         ?>
@@ -130,14 +120,11 @@
         <?php
         }
         ?>
-
       </ul>
-
       <?php
       if (isset($_SESSION['usuario'])) {
       ?>
         <ul class="navbar-nav mr-right">
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="usuarioDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -188,13 +175,10 @@
             </a>
           </li>
         </ul>
-
       <?php
-
       }
       ?>
     </div>
   </nav>
 </body>
-
 </html>

@@ -19,6 +19,11 @@ include_once("../Logic/header.php");
 
         $seleccion = $_POST['seleccion'];
 
+        if ($seleccion == "") {
+            header('Location: error.php?mensaje=NO SE SELECCIONÓ NINGUNA VACANTE -');
+            exit();
+        }
+
         $indice = substr($seleccion, 0, 1);
         $cod_vacante = substr($seleccion, 1);
         //echo ($indice.' - '.$cod_vacante);

@@ -18,6 +18,11 @@ include_once("../Logic/header.php");
 
     $dni = $_POST['dni'];
 
+    if ($dni == "") {
+        header('Location: error.php?mensaje=DNI VACIO-');
+        exit();
+    }
+
     $conn = include("conexion.php");
     echo $dni;
 

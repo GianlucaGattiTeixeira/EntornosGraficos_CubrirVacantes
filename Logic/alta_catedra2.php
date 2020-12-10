@@ -21,6 +21,11 @@ include_once("../Logic/header.php");
     $legajo = $_POST['legajo'];
     $cod_departamento = $_POST['cod_departamento'];
 
+    if (($nombre_catedra == "") || ($legajo == "") || ($cod_departamento == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
+    }
+
     //echo $nombre_catedra . " - " . $legajo . " - " . $cod_departamento;
 
     $conn = include("conexion.php");

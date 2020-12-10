@@ -20,6 +20,11 @@ if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
     $cod_vacante = $_POST['cod_vacante'];
     $puntaje = $_POST['puntaje'];
 
+    if (($dni == "") ||  ($cod_vacante == "") || ($puntaje == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACIOS -');
+        exit();
+    }
+
     echo $dni . " - " . $cod_vacante . " - " . $puntaje;
     $conn = include("conexion.php");
 
@@ -59,7 +64,7 @@ if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
 
 
     <?php
-    
+
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>

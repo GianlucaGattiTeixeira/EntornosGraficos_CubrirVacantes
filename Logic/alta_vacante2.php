@@ -23,6 +23,11 @@ include_once("../Logic/header.php");
     $fecha_hasta = $_POST['fecha_hasta'];
     $info_general = $_POST['info_general'];
 
+    if (($cod_catedra == "") || ($fecha_desde == "") || ($fecha_hasta == "") || ($info_general == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
+    }
+
     $conn = include("conexion.php");
 
     //generar el codigo de la vacante. porque no le pusimos autoincremental gg
@@ -58,7 +63,7 @@ include_once("../Logic/header.php");
     </div>
 
     <?php
-    
+
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>

@@ -16,12 +16,16 @@ include_once("../Logic/header.php");
 
 <body>
     <?php
-
     $cod_vacante = $_SESSION['cod_vacante'];
     $cod_catedra = $_POST['cod_catedra'];
     $fecha_desde = $_POST['fecha_desde'];
     $fecha_hasta = $_POST['fecha_hasta'];
     $info_general = $_POST['info_general'];
+
+    if (($cod_catedra == "") || ($fecha_desde == "") || ($fecha_hasta == "") || ($info_general == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
+    }
 
 
     $conn = include("conexion.php");
@@ -32,7 +36,6 @@ include_once("../Logic/header.php");
             WHERE cod_vacante='$cod_vacante'";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
 
     ?>
     <div class="container">

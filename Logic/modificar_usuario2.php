@@ -36,6 +36,11 @@ echo $contrasena;
 echo $direccion;
 echo $ciudad;
 */
+
+    if (($dni == "") || ($nombre == "") || ($apellido == "") || ($usuario == "") || ($contrasena == "") || ($email == "") || ($direccion == "") || ($ciudad == "") || ($provincia == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
+    }
     $conn = include("conexion.php");
 
     $sentencia =

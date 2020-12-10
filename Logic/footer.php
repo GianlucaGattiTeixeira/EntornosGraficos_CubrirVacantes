@@ -1,4 +1,4 @@
-<footer class="footer" style="margin-top:100px;background-color:#F8F9FA">
+<footer class="footer" style="margin-top:200px;background-color:#F8F9FA">
   <div class="container text-center">
     <div class="row text-center text-md-left mt-3 pb-3">
       <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">

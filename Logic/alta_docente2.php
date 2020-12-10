@@ -26,6 +26,11 @@ include_once("../Logic/header.php");
     $contrasena = $_POST['contrasena'];
     $email = $_POST['email'];
 
+    if (($dni == "") || ($nombre == "") || ($apellido == "") || ($usuario == "") || ($contrasena == "") || ($email == "") || ($legajo == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
+    }
+
     $conn = include("conexion.php");
 
 
@@ -53,7 +58,7 @@ include_once("../Logic/header.php");
 
         $sentencia = "SELECT dni FROM usuario WHERE dni='$dni'";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
-                $existe = mysqli_fetch_assoc($resultado);
+        $existe = mysqli_fetch_assoc($resultado);
         mysqli_free_result($resultado);
 
         if ($existe) {
@@ -99,7 +104,7 @@ include_once("../Logic/header.php");
         }
     }
     mysqli_close($link);
-        include_once("../Logic/footer.php");
+    include_once("../Logic/footer.php");
     ?>
 </body>
 

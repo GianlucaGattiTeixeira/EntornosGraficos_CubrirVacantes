@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <?php
     include_once("../Logic/header.php");
     ?>
@@ -20,32 +20,9 @@
     $ciudad = $_POST['ciudad'];
     $provincia = $_POST['provincia'];
 
-    if ($dni == ""){
-        header('Location: error.php?mensaje=EL CAMPO DNI SE ENCUENTRA VACÍO -');
-    }
-    if ($nombre == ""){
-        header('Location: error.php?mensaje=EL CAMPO NOMBRE SE ENCUENTRA VACÍO -');
-    }
-    if ($apellido == ""){
-        header('Location: error.php?mensaje=EL CAMPO APELLIDO SE ENCUENTRA VACÍO -');
-    }
-    if ($usuario == ""){
-        header('Location: error.php?mensaje=EL CAMPO USUARIO SE ENCUENTRA VACÍO -');
-    }
-    if ($contrasena == ""){
-        header('Location: error.php?mensaje=EL CAMPO CONTRASEÑA SE ENCUENTRA VACÍO -');
-    }
-    if ($email == ""){
-        header('Location: error.php?mensaje=EL CAMPO E-MAIL SE ENCUENTRA VACÍO -');
-    }
-    if ($direccion == ""){
-        header('Location: error.php?mensaje=EL CAMPO DIRECCIÓN SE ENCUENTRA VACÍO -');
-    }
-    if ($ciudad == ""){
-        header('Location: error.php?mensaje=EL CAMPO CIUDAD SE ENCUENTRA VACÍO -');
-    }
-    if ($provincia == ""){
-        header('Location: error.php?mensaje=EL CAMPO PROVINCIA SE ENCUENTRA VACÍO -');
+    if (($dni == "") || ($nombre == "") || ($apellido == "") || ($usuario == "") || ($contrasena == "") || ($email == "") || ($direccion == "") || ($ciudad == "") || ($provincia == "")) {
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
+        exit();
     }
 
     $conn = include("conexion.php");

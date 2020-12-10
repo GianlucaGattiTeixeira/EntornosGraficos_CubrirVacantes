@@ -22,6 +22,12 @@ include_once("../Logic/header.php");
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
 
+    if (($dni == "") ||  ($nombre == "") ||($apellido == "") ||($usuario == "") ||($contrasena == "")){
+        header('Location: error.php?mensaje=EXISTEN CAMPOS VACIOS -');
+        exit();
+    }
+
+
     //echo $dni . ' - ' . $nombre . ' - ' . $apellido . ' - ' . $usuario. ' - ' . $contrasena;
 
     $conn = include("conexion.php");

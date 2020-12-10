@@ -19,6 +19,11 @@ include_once("../Logic/header.php");
 
         $seleccion = $_POST['seleccion'];
 
+        if ($seleccion == "") {
+            header('Location: error.php?mensaje=NO SE SELECCIONÓ NINGUNA VACANTE -');
+            exit();
+        }
+
         $dni = substr($seleccion, 0, 8);
         $fecha_hora = substr($seleccion, 8, 27);
         $cod_vacante = substr($seleccion, 27);
