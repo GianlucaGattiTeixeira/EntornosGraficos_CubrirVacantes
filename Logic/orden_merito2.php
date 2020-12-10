@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
+    header("Location: ../Logic/index.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['legajo']) or !isset($_SESSION['dni'])) {
-        header("Location: ../Logic/index.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -45,6 +47,7 @@
 
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
         $fila = mysqli_fetch_assoc($resultado);
+        mysqli_free_result($resultado);
 
     ?>
         <div class="container">
@@ -149,11 +152,13 @@
                 ORDER BY puntaje DESC  
                 LIMIT 1";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+        mysqli_free_result($resultado);
         $usuario = mysqli_fetch_assoc($resultado);
 
 
         $sentencia2 = "SELECT * FROM vacante WHERE cod_vacante='$cod_vacante'";
         $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
+        mysqli_free_result($resultado2);
         $vac = mysqli_fetch_assoc($resultado2);
 
 
@@ -201,8 +206,8 @@
     ?>
 
     <?php
-    //mysqli_free_result($resultado);
-    //mysqli_close($link);
+    
+    mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>

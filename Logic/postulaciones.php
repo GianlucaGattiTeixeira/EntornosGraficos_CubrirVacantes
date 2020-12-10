@@ -1,15 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/index.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['dni'])) {
-        header("Location: ../Logic/index.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
 </head>
 
 <body>
@@ -22,6 +25,7 @@
     if ($es_admin == 1) {
         $sentencia = "SELECT * FROM postulacion ORDER BY fecha_hora ASC";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+        
     } else {
         $dni = $_SESSION['dni'];
         $sentencia = "SELECT * FROM postulacion WHERE dni='$dni' ORDER BY fecha_hora ASC";
@@ -66,9 +70,9 @@
                     <?php
                     }
 
-                    // Liberar conjunto de resultados
+
                     mysqli_free_result($resultado);
-                    // Cerrar la conexion
+
                     mysqli_close($link);
                     ?>
 

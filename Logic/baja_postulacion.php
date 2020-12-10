@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/index.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['dni'])) {
-        header("Location: ../Logic/index.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -62,16 +64,13 @@
                             <td><?php echo ($fila['cod_curriculum']); ?></td>
                             <td><a class="linkcv" href="../Archivos/<?php $a = $fila['cod_curriculum'];
                                                                     $b = $fila['curriculum'];
-                                                                    echo $a . $b; ?> " target="_blank"><img src="../Imagenes/Ver.svg"/>Ver CV</a></td>
-                            <td><button type="submit" style="color: red;"class="btn btn btn-outline-danger" name="seleccion" value="<?php echo $fila['dni'] . $fila['fecha_hora'] . $fila['cod_vacante']; ?>"><img src="../Imagenes/Borrar.svg"/> Eliminar</button></td>
+                                                                    echo $a . $b; ?> " target="_blank"><img src="../Imagenes/Ver.svg" />Ver CV</a></td>
+                            <td><button type="submit" style="color: red;" class="btn btn btn-outline-danger" name="seleccion" value="<?php echo $fila['dni'] . $fila['fecha_hora'] . $fila['cod_vacante']; ?>"><img src="../Imagenes/Borrar.svg" /> Eliminar</button></td>
                         </tr>
 
                     <?php
                     }
-
-                    // Liberar conjunto de resultados
                     mysqli_free_result($resultado);
-                    // Cerrar la conexion
                     mysqli_close($link);
                     ?>
 

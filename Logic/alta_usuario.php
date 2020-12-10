@@ -22,12 +22,19 @@
     $ciudad = $_POST['ciudad'];
     $provincia = $_POST['provincia'];
 
+    if ($direccion==""){
+        $mensaje = "El dni esta vacio";
+        echo "<script>alert('".$mensaje."');return false;</script>";
+        
+    }
+
     $conn = include("conexion.php");
 
 
     $sentencia1 = "SELECT dni FROM usuario WHERE usuario='$usuario'";
     $resultado1 = mysqli_query($link, $sentencia1) or die(mysqli_error($link));
     $existe1 = mysqli_fetch_assoc($resultado1);
+    mysqli_free_result($resultado1);
 
     if ($existe1) {
     ?>
@@ -49,6 +56,7 @@
         $sentencia = "SELECT dni FROM usuario WHERE dni='$dni'";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
         $existe = mysqli_fetch_assoc($resultado);
+        mysqli_free_result($resultado);
 
         if ($existe) {
         ?>
@@ -87,8 +95,8 @@
     <?php
         }
     }
-    //mysqli_free_result($resultado);
-    //mysqli_close($link);
+   
+    mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>

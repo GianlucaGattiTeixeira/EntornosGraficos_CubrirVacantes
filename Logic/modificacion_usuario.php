@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+} // si no esta logeado o si esta logeado y es usuario comun: sale
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    } // si no esta logeado o si esta logeado y es usuario comun: sale
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -46,7 +48,7 @@
                                 <td><?php echo ($fila['dni']); ?></td>
                                 <td><?php echo ($fila['nombre']); ?></td>
                                 <td><?php echo ($fila['apellido']); ?></td>
-                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/Modificar.svg"/>Modificar</button></td>
+                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/Modificar.svg" />Modificar</button></td>
                             </tr>
 
                         <?php
@@ -58,7 +60,7 @@
             </form>
         </div>
     </div>
-
+ 
     <?php
     include_once("../Logic/footer.php");
     ?>

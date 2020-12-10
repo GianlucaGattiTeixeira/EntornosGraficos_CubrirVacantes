@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/iniciar_sesion.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['dni'])) {
-        header("Location: ../Logic/iniciar_sesion.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -23,6 +25,7 @@
         $sentencia = "SELECT * FROM postulacion WHERE dni='$dni' and cod_vacante='$cod_vacante'";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
         $existe = mysqli_fetch_assoc($resultado);
+        mysqli_free_result($resultado);
 
         if ($existe) {
         ?>
@@ -65,7 +68,7 @@
     </div>
 <?php
         }
-        mysqli_free_result($resultado);
+        
         mysqli_close($link);
         include_once("../Logic/footer.php");
 ?>

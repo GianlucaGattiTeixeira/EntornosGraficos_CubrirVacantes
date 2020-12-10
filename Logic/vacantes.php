@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <?php
     include_once("../Logic/header.php");
     ?>
@@ -19,6 +19,8 @@
                 WHERE NOW() > fecha_desde and NOW() < fecha_hasta";
 
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+   
+
 
 
     ?>
@@ -40,7 +42,7 @@
                         if (!isset($_SESSION['legajo'])) {
                             echo '<th scope="col"></th>';
                         }
-                        ?>                        
+                        ?>
                     </tr>
                 </thead>
 
@@ -65,10 +67,7 @@
 
                     <?php
                     }
-
-                    // Liberar conjunto de resultados
                     mysqli_free_result($resultado);
-                    // Cerrar la conexion
                     mysqli_close($link);
                     ?>
 

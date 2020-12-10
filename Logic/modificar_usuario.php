@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/iniciar_sesion.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['dni'])) {
-        header("Location: ../Logic/iniciar_sesion.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <script type="text/javascript" src="jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 </head>
@@ -22,6 +24,7 @@
                 FROM provincias;";
     $provincia = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $provincias = array();
+    mysqli_free_result($provincia);
     while ($r = $provincia->fetch_object()) {
         $provincias[] = $r;
     }
@@ -33,9 +36,10 @@
     $conn = include("conexion.php");
 
     $sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
-    $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));;
+    $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $existe = mysqli_fetch_assoc($resultado);
-
+    mysqli_free_result($resultado);
+    
     if (!$existe) {
     ?>
         <div class="container">
@@ -94,13 +98,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-md-4" >
+                    <div class="form-group col-md-4">
                         <label class="control-label col-md-2">Contrasena:</label>
                         <div class="col-md-12" style="display: flex;">
                             <input name="contrasena" class="form-control" type="password" id="password" value="<?php echo $existe['contrasena'] ?>">
                             <i style="margin:10px" id="pass-status" class="fa fa-eye" aria-hidden="true" onClick="viewPassword()"></i>
                         </div>
-       
+
                     </div>
 
                     <div class="form-group col-md-4">
@@ -178,7 +182,7 @@
 <?php
 
     }
-    mysqli_free_result($resultado);
+    
     mysqli_close($link);
 ?>
 

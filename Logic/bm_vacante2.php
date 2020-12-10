@@ -1,15 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+} // si no esta logeado o si esta logeado y es usuario comun: sale
+include_once("../Logic/header.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    } // si no esta logeado o si esta logeado y es usuario comun: sale
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -54,6 +55,7 @@
             $sentencia = "SELECT * FROM vacante WHERE cod_vacante='$cod_vacante'";
             $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
             $fila = mysqli_fetch_array($resultado);
+            mysqli_free_result($resultado);
 
 
             $_SESSION['cod_vacante'] = $fila['cod_vacante'];
@@ -84,19 +86,19 @@
                     </div>
 
                     <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label col-md-12">Fecha desde:</label>
-                        <div class="col-md-12">
-                            <input name="fecha_desde" class="form-control" type="datetime" value="<?php echo $fila['fecha_desde'] ?>">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-12">Fecha desde:</label>
+                            <div class="col-md-12">
+                                <input name="fecha_desde" class="form-control" type="datetime" value="<?php echo $fila['fecha_desde'] ?>">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group col-md-6">
-                        <label class="control-label col-md-12">Fecha hasta:</label>
-                        <div class="col-md-12">
-                            <input name="fecha_hasta" class="form-control" type="datetime" value="<?php echo $fila['fecha_hasta'] ?>">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-12">Fecha hasta:</label>
+                            <div class="col-md-12">
+                                <input name="fecha_hasta" class="form-control" type="datetime" value="<?php echo $fila['fecha_hasta'] ?>">
+                            </div>
                         </div>
-                    </div>
                     </div>
 
                     <div class="form-group">

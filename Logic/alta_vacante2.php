@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+} // si no esta logeado o si esta logeado y es usuario comun: sale
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    } // si no esta logeado o si esta logeado y es usuario comun: sale
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -27,6 +29,7 @@
     $sentencia = "SELECT MAX(cod_vacante) as cod_vacante FROM vacante";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $fila = mysqli_fetch_array($resultado);
+    mysqli_free_result($resultado);
 
     if (isset($fila['cod_vacante'])) {
         $cod_vacante = $fila['cod_vacante'];
@@ -40,7 +43,6 @@
             VALUES ('$cod_vacante', '$fecha_desde', '$fecha_hasta', '$info_general', '$cod_catedra')";
 
     mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
     ?>
     <div class="container">
         <div class="form-group col-md-12">
@@ -56,7 +58,7 @@
     </div>
 
     <?php
-    mysqli_free_result($resultado);
+    
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>

@@ -1,15 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/iniciar_sesion.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['dni'])) {
-        header("Location: ../Logic/iniciar_sesion.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+
 </head>
 
 <body>
@@ -43,6 +46,7 @@
     //registrar la postulacion a la bd
     $sentencia2 = "INSERT INTO postulacion(dni,cod_vacante,fecha_hora,curriculum,cod_curriculum) VALUES ('$dni', '$cod_vacante', now(), '$nombre', '$cod_curriculum');";
     $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
+    mysqli_free_result($resultado2);
 
     ?>
     <div class="container">
@@ -57,7 +61,7 @@
             </div>
         </div>
     </div>
-    
+
     <?php
     include_once("../Logic/footer.php");
     ?>

@@ -1,14 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+}
+include_once("../Logic/header.php");
+?>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    }
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -29,6 +32,7 @@
     $sentencia1 = "SELECT dni FROM usuario WHERE usuario='$usuario'";
     $resultado1 = mysqli_query($link, $sentencia1) or die(mysqli_error($link));
     $existe1 = mysqli_fetch_assoc($resultado1);
+    mysqli_free_result($resultado1);
 
     if ($existe1) {
     ?>
@@ -49,7 +53,8 @@
 
         $sentencia = "SELECT dni FROM usuario WHERE dni='$dni'";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
-        $existe = mysqli_fetch_assoc($resultado);
+                $existe = mysqli_fetch_assoc($resultado);
+        mysqli_free_result($resultado);
 
         if ($existe) {
         ?>
@@ -68,7 +73,7 @@
         <?php
         } else {
             $sentencia2 = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,es_admin) 
-                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','1')";
+                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','0')";
 
             mysqli_query($link, $sentencia2) or die(mysqli_error($link));
 
@@ -93,9 +98,8 @@
     <?php
         }
     }
-    //mysqli_free_result($resultado);
-    //mysqli_close($link);
-    include_once("../Logic/footer.php");
+    mysqli_close($link);
+        include_once("../Logic/footer.php");
     ?>
 </body>
 

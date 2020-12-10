@@ -1,15 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+} // si no esta logeado o si esta logeado y es usuario comun: sale
+include_once("../Logic/header.php");
+?>
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    } // si no esta logeado o si esta logeado y es usuario comun: sale
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -22,8 +23,9 @@
 
 
     $sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
-    $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));;
+    $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $existe = mysqli_fetch_assoc($resultado);
+    mysqli_free_result($resultado);
 
     if ($existe) {
         $sentencia = "DELETE FROM usuario WHERE dni = '$dni'";
@@ -63,7 +65,7 @@
     <?php
 
     }
-    mysqli_free_result($resultado);
+    
     mysqli_close($link);
     include_once("../Logic/footer.php");
 

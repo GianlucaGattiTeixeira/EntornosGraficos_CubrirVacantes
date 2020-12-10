@@ -1,15 +1,17 @@
+<?php
+session_start();
+if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
+    header("Location: ../Logic/index.php");
+    exit();
+} // si no esta logeado o si esta logeado y es usuario comun: sale
+include_once("../Logic/header.php");
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <?php
-    session_start();
-    if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-        header("Location: ../Logic/index.php");
-    } // si no esta logeado o si esta logeado y es usuario comun: sale
-    include_once("../Logic/header.php");
-    ?>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 
 <body>
@@ -29,6 +31,7 @@
                 WHERE NOW() > fecha_desde and NOW() < fecha_hasta";
 
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+        
 
 
         ?>
@@ -58,18 +61,17 @@
                                 <td><?php echo ($fila['fecha_desde']); ?></td>
                                 <td><?php echo ($fila['fecha_hasta']); ?></td>
                                 <td><?php echo ($fila['info_general']); ?></td>
-                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo 'm' . $fila['cod_vacante']; ?>"><img src="../Imagenes/Modificar.svg"/> Modificar</button></td>
-                                <td><button type="submit" class="btn btn-outline-danger" style="color: red;" name="seleccion" value="<?php echo 'b' . $fila['cod_vacante']; ?>"><img src="../Imagenes/Borrar.svg"/> Eliminar</button></td>
+                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo 'm' . $fila['cod_vacante']; ?>"><img src="../Imagenes/Modificar.svg" /> Modificar</button></td>
+                                <td><button type="submit" class="btn btn-outline-danger" style="color: red;" name="seleccion" value="<?php echo 'b' . $fila['cod_vacante']; ?>"><img src="../Imagenes/Borrar.svg" /> Eliminar</button></td>
 
                             </tr>
-                            
+
                         <?php
                         }
 
                         mysqli_free_result($resultado);
                         mysqli_close($link);
                         ?>
-
 
                     </tbody>
                 </table>

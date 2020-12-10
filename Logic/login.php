@@ -19,6 +19,7 @@
 			FROM usuario WHERE usuario='$usuario' and contrasena='$contrasena'";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $existe = mysqli_fetch_assoc($resultado);
+    mysqli_free_result($resultado);
 
     if ($existe) {
         session_start();
@@ -30,11 +31,13 @@
                     WHERE u.usuario='$usuario' and u.contrasena='$contrasena'";
         $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
         $existe2 = mysqli_fetch_assoc($resultado2);
+        mysqli_free_result($resultado2);
         if ($existe2) {
             $_SESSION['legajo'] = $existe2['legajo'];
         }
 
         header("Location: ../Logic/index.php");
+		exit();
     } else {
         include_once("../Logic/header.php");
     ?>
@@ -57,7 +60,7 @@
 
     <?php
     }
-    mysqli_free_result($resultado);
+    
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
