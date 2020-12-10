@@ -10,8 +10,6 @@
 
 <body>
     <?php
-    //session_start();
-
     $dni = $_POST['dni'];
     $nombre = $_POST['nombre'];
     $apellido = $_POST['apellido'];
@@ -22,10 +20,32 @@
     $ciudad = $_POST['ciudad'];
     $provincia = $_POST['provincia'];
 
-    if ($direccion==""){
-        $mensaje = "El dni esta vacio";
-        echo "<script>alert('".$mensaje."');return false;</script>";
-        
+    if ($dni == ""){
+        header('Location: error.php?mensaje=EL CAMPO DNI SE ENCUENTRA VACÍO -');
+    }
+    if ($nombre == ""){
+        header('Location: error.php?mensaje=EL CAMPO NOMBRE SE ENCUENTRA VACÍO -');
+    }
+    if ($apellido == ""){
+        header('Location: error.php?mensaje=EL CAMPO APELLIDO SE ENCUENTRA VACÍO -');
+    }
+    if ($usuario == ""){
+        header('Location: error.php?mensaje=EL CAMPO USUARIO SE ENCUENTRA VACÍO -');
+    }
+    if ($contrasena == ""){
+        header('Location: error.php?mensaje=EL CAMPO CONTRASEÑA SE ENCUENTRA VACÍO -');
+    }
+    if ($email == ""){
+        header('Location: error.php?mensaje=EL CAMPO E-MAIL SE ENCUENTRA VACÍO -');
+    }
+    if ($direccion == ""){
+        header('Location: error.php?mensaje=EL CAMPO DIRECCIÓN SE ENCUENTRA VACÍO -');
+    }
+    if ($ciudad == ""){
+        header('Location: error.php?mensaje=EL CAMPO CIUDAD SE ENCUENTRA VACÍO -');
+    }
+    if ($provincia == ""){
+        header('Location: error.php?mensaje=EL CAMPO PROVINCIA SE ENCUENTRA VACÍO -');
     }
 
     $conn = include("conexion.php");
@@ -37,20 +57,7 @@
     mysqli_free_result($resultado1);
 
     if ($existe1) {
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>El nombre de usuario ingresado ya existe, por favor ingrese otro nombre de usuario</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-        <?php
+        header('Location: error.php?mensaje=Ya existe el nombre de usuario -');
     } else {
 
         $sentencia = "SELECT dni FROM usuario WHERE dni='$dni'";
@@ -59,43 +66,13 @@
         mysqli_free_result($resultado);
 
         if ($existe) {
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>El usuario ingresado ya existe</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-        <?php
+            header('Location: error.php?mensaje=Ya existe un usuario con el dni ingresado -');
         } else {
-            $sentencia = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,direccion,ciudad,provincia,es_admin) 
-                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','$direccion','$ciudad','$provincia','0')";
-
+            $sentencia = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,direccion,ciudad,provincia,es_admin) values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','$direccion','$ciudad','$provincia','0')";
             mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>El usuario fue registrado</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-    <?php
+            header('Location: exito.php?mensaje=Usuario registrado con éxito -');
         }
     }
-   
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>

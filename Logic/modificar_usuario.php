@@ -24,7 +24,6 @@ include_once("../Logic/header.php");
                 FROM provincias;";
     $provincia = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $provincias = array();
-    mysqli_free_result($provincia);
     while ($r = $provincia->fetch_object()) {
         $provincias[] = $r;
     }
@@ -32,7 +31,7 @@ include_once("../Logic/header.php");
     <?php
 
     $dni = $_SESSION['dni'];
-
+    mysqli_free_result($provincia);
     $conn = include("conexion.php");
 
     $sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
