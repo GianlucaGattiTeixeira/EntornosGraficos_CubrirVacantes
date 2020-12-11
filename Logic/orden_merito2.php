@@ -161,30 +161,17 @@ include_once("../Logic/header.php");
         mysqli_free_result($resultado2);
         $vac = mysqli_fetch_assoc($resultado2);
 
-
         //envio de mail
         $nombre = $usuario['nombre'];
         $email = $usuario['email'];
         $asunto = 'Resultado orden de mérito';
         $consulta = 'Felicitaciones! Usted ha sido elegido como jefe de catedra';
-
-        //echo $usuario['dni'] . ' - ' . $usuario['nombre'] . ' - ' . $usuario['apellido'] . ' / ' . $vac['cod_vacante'] . ' - ' . $vac['info_general'] . ' - ' . $vac['envio_mail'] . " / " . $asunto . " - " . $consulta . " - " . $nombre . " - " . $email;
-
         $destinatario = "danidruetta_97@hotmail.com";
         $headers = "From: " . $nombre . " <" . $email . ">\r\n";
-
         //mail($destinatario,$asunto,$consulta,$headers);
-
         //modificar tabla vacante
-
-        $sentencia3 =
-            "UPDATE vacante
-            SET envio_mail='1'
-            WHERE cod_vacante='$cod_vacante'";
-
+        $sentencia3 ="UPDATE vacante SET envio_mail='1' WHERE cod_vacante='$cod_vacante'";
         mysqli_query($link, $sentencia3) or die(mysqli_error($link));
-
-
     ?>
         <div class="container">
             <div class="form-group">
@@ -203,10 +190,6 @@ include_once("../Logic/header.php");
         </div>
     <?php
     }
-    ?>
-
-    <?php
-    
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>

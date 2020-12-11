@@ -16,7 +16,6 @@ include_once("../Logic/header.php");
 
 <body>
     <?php
-    //session_start();
 
     $cod_catedra = $_POST['cod_catedra'];
     $fecha_desde = $_POST['fecha_desde'];
@@ -24,13 +23,10 @@ include_once("../Logic/header.php");
     $info_general = $_POST['info_general'];
 
     if (($cod_catedra == "") || ($fecha_desde == "") || ($fecha_hasta == "") || ($info_general == "")) {
-        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
-        exit();
+        echo '<script>window.location.replace("error.php?mensaje=Existen campos vacíos -");</script>';
     }
 
     $conn = include("conexion.php");
-
-    //generar el codigo de la vacante. porque no le pusimos autoincremental gg
     $sentencia = "SELECT MAX(cod_vacante) as cod_vacante FROM vacante";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $fila = mysqli_fetch_array($resultado);
@@ -42,30 +38,19 @@ include_once("../Logic/header.php");
     } else {
         $cod_vacante = 1;
     }
-
-    //ingresar la vacante a la bd
-    $sentencia = "INSERT INTO vacante (cod_vacante,fecha_desde,fecha_hasta,info_general,cod_catedra) 
-            VALUES ('$cod_vacante', '$fecha_desde', '$fecha_hasta', '$info_general', '$cod_catedra')";
-
-    mysqli_query($link, $sentencia) or die(mysqli_error($link));
-    ?>
-    <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h5>La vacante fue registrada</h5>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-            </div>
-        </div>
-    </div>
-
-    <?php
-
-    mysqli_close($link);
-    include_once("../Logic/footer.php");
+    try{
+        //ingresar la vacante a la bd
+        $sentencia = "INSERT INTO vacante (cod_vacante,fecha_desde,fecha_hasta,info_general,cod_catedra) VALUES ('$cod_vacante', '$fecha_desde', '$fecha_hasta', '$info_general', '$cod_catedra')";
+        if (!mysqli_query($link, $sentencia)){
+            throw new Exception();
+        }
+        echo '<script>window.location.replace("exito.php?mensaje=La vacante fue registrada -");</script>';
+        }catch(Exception $e){
+            echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+        }
+        finally{
+            mysqli_close($link);
+        }
     ?>
 </body>
 

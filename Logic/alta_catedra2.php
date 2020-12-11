@@ -22,8 +22,7 @@ include_once("../Logic/header.php");
     $cod_departamento = $_POST['cod_departamento'];
 
     if (($nombre_catedra == "") || ($legajo == "") || ($cod_departamento == "")) {
-        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
-        exit();
+        echo '<script>window.location.replace("error.php?mensaje=Existen campos vacíos -");</script>';
     }
 
     //echo $nombre_catedra . " - " . $legajo . " - " . $cod_departamento;
@@ -34,43 +33,22 @@ include_once("../Logic/header.php");
     $existe1 = mysqli_fetch_assoc($resultado1);
 
     if ($existe1) {
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>El nombre de catedra ingresado ya existe, por favor ingrese otra catedra</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-    <?php
-
-    } else {
-        $sentencia = "INSERT INTO catedra (nombre_catedra, legajo, cod_departamento) 
-                        VALUES ('$nombre_catedra','$legajo','$cod_departamento')";
-        mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>La catedra fue registrada</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-
-    <?php
+        echo '<script>window.location.replace("error.php?mensaje=La cátedra ingresada ya existe -");</script>';
+    }else {
+        try{
+            $sentencia = "INSERT INTO catedra (nombre_catedra, legajo, cod_departamento) VALUES ('$nombre_catedra','$legajo','$cod_departamento')";
+            if (!mysqli_query($link, $sentencia)){
+                throw new Exception();
+            }
+            echo '<script>window.location.replace("exito.php?mensaje=La cátedra se registró satisfactoriamente -");</script>';
+        }
+        catch(Exception $e){
+            echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+        }
+        finally{
+            mysqli_close($link);
+        }
     }
-    include_once("../Logic/footer.php");
     ?>
 </body>
 

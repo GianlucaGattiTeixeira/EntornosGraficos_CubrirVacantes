@@ -22,36 +22,21 @@ include_once("../Logic/header.php");
     $cod_departamento = $_POST['cod_departamento'];
 
     if (($cod_catedra == "") || ($nombre_catedra == "") || ($legajo == "")||($cod_departamento == "") ){
-        header('Location: error.php?mensaje=ERRRRRRRRRROR-');
-        exit();
+        echo '<script>window.location.replace("error.php?mensaje=Existen campos vacíos -");</script>';
     }
-
-    //echo $cod_catedra . ' - ' . $nombre_catedra . ' - ' . $legajo . ' - ' .  $cod_departamento;
-
-
-    $conn = include("conexion.php");
-
-    $sentencia =
-        "UPDATE catedra
-            SET nombre_catedra='$nombre_catedra', legajo='$legajo', cod_departamento='$cod_departamento'
-            WHERE cod_catedra='$cod_catedra'";
-
-    mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-    ?>
-    <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h5>La cátedra fue modificada</h5>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-            </div>
-        </div>
-    </div>
-    <?php
-    include_once("../Logic/footer.php");
+    try{
+        $conn = include("conexion.php");
+        $sentencia = "UPDATE catedra SET nombre_catedra='$nombre_catedra', legajo='$legajo', cod_departamento='$cod_departamento' WHERE cod_catedra='$cod_catedra'";
+        if (!mysqli_query($link, $sentencia)){
+            throw new Exception();
+        }
+        echo '<script>window.location.replace("exito.php?mensaje=La cátedra fue modificada correctamente -");</script>';
+    }
+    catch(Exception $e){
+        echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+    }
+    finally{
+        mysqli_close($link);
+    }
     ?>
 </body>

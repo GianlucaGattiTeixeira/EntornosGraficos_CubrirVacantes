@@ -16,7 +16,6 @@ include_once("../Logic/header.php");
 
 <body>
     <?php
-
     $legajo = $_SESSION['legajo_modificar'];
     $dni = $_SESSION['dni_modificar'];
     $nombre = $_POST['nombre'];
@@ -24,41 +23,25 @@ include_once("../Logic/header.php");
     $email = $_POST['email'];
 
     if (($dni == "") ||  ($nombre == "") ||($apellido == "") ||($legajo == "") ||($email == "")){
-        header('Location: error.php?mensaje=EXISTEN CAMPOS VACIOS -');
-        exit();
+        echo '<script>window.location.replace("exito.php?mensaje=Existen campos vacíos -");</script>';
     }
-
-    //echo $legajo . ' - ' . $dni . ' - ' . $nombre . ' - ' . $apellido . ' - ' . $email;
-
-    $conn = include("conexion.php");
-    $sentencia =
-        "UPDATE jefe_catedra
-            SET nombre='$nombre', apellido='$apellido', email='$email'
-            WHERE legajo='$legajo'";
-
-    mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-
-    $sentencia2 =
-        "UPDATE usuario 
-            SET nombre='$nombre', apellido='$apellido', email='$email'
-            WHERE dni='$dni'";
-
-    mysqli_query($link, $sentencia2) or die(mysqli_error($link));
-    ?>
-    <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h5>La jefe de cátedra fue modificado</h5>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-            </div>
-        </div>
-    </div>
-    <?php
-    include_once("../Logic/footer.php");
+    try{
+        $conn = include("conexion.php");
+        $sentencia ="UPDATE jefe_catedra SET nombre='$nombre', apellido='$apellido', email='$email' WHERE legajo='$legajo'";
+        if (!mysqli_query($link, $sentencia)){
+            throw new Exception();
+        }
+        $sentencia2 = "UPDATE usuario SET nombre='$nombre', apellido='$apellido', email='$email' WHERE dni='$dni'";
+        if (!mysqli_query($link, $sentenci2)){
+            throw new Exception();
+        }
+        echo '<script>window.location.replace("exito.php?mensaje=El docente ha sido modificado correctamente -");</script>';
+    }
+    catch(Exception $e){
+        echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+    }
+    finally{
+        mysqli_close($link);
+    }
     ?>
 </body>

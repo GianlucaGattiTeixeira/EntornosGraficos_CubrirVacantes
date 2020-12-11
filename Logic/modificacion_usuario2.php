@@ -17,17 +17,15 @@ include_once("../Logic/header.php");
 <body>
     <?php
     $conn = include("conexion.php");
-
     $dni = $_POST['seleccion'];
-
+    if ($dni == ""){
+        echo '<script>window.location.replace("error.php?mensaje=No se seleccionó ningpun usuario -");</script>';
+    }
     $sentencia = "SELECT * FROM usuario WHERE dni = '$dni'";
-
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $fila = mysqli_fetch_array($resultado);
     mysqli_free_result($resultado);
-
     ?>
-
     <div class="container">
         <br />
         <h3 align="center">Modificar usuario</h3>
@@ -43,7 +41,6 @@ include_once("../Logic/header.php");
                     <input name="dni" class="form-control" type="hidden" value="<?php echo $fila['dni'] ?>">
                 </div>
             </div>
-
 
             <div class="form-row">
                 <div class="form-group col-md-6">

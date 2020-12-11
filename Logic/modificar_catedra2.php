@@ -19,6 +19,10 @@ include_once("../Logic/header.php");
 
     $cod_catedra = $_POST['seleccion'];
 
+    if ($cod_catedra == ""){
+        echo '<script>window.location.replace("error.php?mensaje=No se seleccionó ninguna cátedra -");</script>';
+    }
+
     $sentencia = "SELECT c.cod_catedra, c.nombre_catedra, jc.legajo, jc.nombre, jc.apellido, d.cod_departamento, d.nombre as nombre_departamento
                     FROM catedra c       
                     INNER JOIN jefe_catedra jc

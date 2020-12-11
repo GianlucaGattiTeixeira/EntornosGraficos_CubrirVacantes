@@ -20,6 +20,10 @@ include_once("../Logic/header.php");
 
     $legajo = $_POST['seleccion'];
 
+    if($legajo == ""){
+        echo '<script>window.location.replace("error.php?mensaje=No se seleccionó ningún docente -");</script>';
+    }
+
     $sentencia = "SELECT * FROM jefe_catedra WHERE legajo = '$legajo'";
 
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));

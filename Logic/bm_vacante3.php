@@ -16,43 +16,33 @@ include_once("../Logic/header.php");
 
 <body>
     <?php
-    $cod_vacante = $_SESSION['cod_vacante'];
+    $cod_vacante = $_POST['cod_vacante'];
     $cod_catedra = $_POST['cod_catedra'];
     $fecha_desde = $_POST['fecha_desde'];
     $fecha_hasta = $_POST['fecha_hasta'];
     $info_general = $_POST['info_general'];
 
     if (($cod_catedra == "") || ($fecha_desde == "") || ($fecha_hasta == "") || ($info_general == "")) {
-        header('Location: error.php?mensaje=EXISTEN CAMPOS VACÍOS -');
-        exit();
+        echo '<script>window.location.replace("error.php?mensaje=Existen campos vacíos -");</script>';
     }
 
-
-    $conn = include("conexion.php");
-
-    $sentencia =
-        "UPDATE vacante
-            SET cod_catedra='$cod_catedra', fecha_desde='$fecha_desde', fecha_hasta='$fecha_hasta', info_general='$info_general'
-            WHERE cod_vacante='$cod_vacante'";
-
-    mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-    ?>
-    <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h5>La vacante fue modificada</h5>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-12">
-                <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-            </div>
-        </div>
-    </div>
-    <?php
-
-    mysqli_close($link);
+    try{
+        $conn = include("conexion.php");
+        $sentencia ="UPDATE vacante SET cod_catedra='$cod_catedra', fecha_desde='$fecha_desde', fecha_hasta='$fecha_hasta', info_general='$info_general' WHERE cod_vacante='$cod_vacante'";
+        try{
+            if (!mysqli_query($link, $sentencia)){
+                throw new Exception();
+            }
+            echo '<script>window.location.replace("exito.php?mensaje=La vacante fue modificada correctamente -");</script>';
+        }catch(Exception $e){
+            echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+        }
+    }catch(mysqli_sql_exception $e){
+        echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+    }
+    finally{
+        mysqli_close($link);
+    }
     include_once("../Logic/footer.php");
     ?>
 </body>

@@ -16,55 +16,27 @@ include_once("../Logic/header.php");
 <body>
     <div class="container">
         <?php
-
         $seleccion = $_POST['seleccion'];
 
         if ($seleccion == "") {
-            header('Location: error.php?mensaje=NO SE SELECCIONÓ NINGUNA VACANTE -');
-            exit();
+            echo '<script>window.location.replace("error.php?mensaje=Ninguna vacante fue seleccionada -");</script>';
         }
 
         $indice = substr($seleccion, 0, 1);
         $cod_vacante = substr($seleccion, 1);
-        //echo ($indice.' - '.$cod_vacante);
-
         $cod_vacante = (int) $cod_vacante;
-        //echo (' - '.var_dump($cod_vacante));
-
         $conn = include("conexion.php");
 
         if ($indice == 'b') {
             $sentencia = "DELETE FROM vacante WHERE cod_vacante = '$cod_vacante'";
             mysqli_query($link, $sentencia) or die(mysqli_error($link));
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>La vacante fue eliminada</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-        <?php
-
-
+            echo '<script>window.location.replace("exito.php?mensaje=La vacante fue eliminada correctamente -");</script>';
         } else {
             //se hace la modificacion
-
-
-
             $sentencia = "SELECT * FROM vacante WHERE cod_vacante='$cod_vacante'";
             $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
             $fila = mysqli_fetch_array($resultado);
             mysqli_free_result($resultado);
-
-
-            $_SESSION['cod_vacante'] = $fila['cod_vacante'];
-
         ?>
             <div class="container">
                 <br />
@@ -78,7 +50,8 @@ include_once("../Logic/header.php");
                         <div class="form-group col-md-6">
                             <label class="control-label col-md-12">Codigo vacante:</label>
                             <div class="col-md-12">
-                                <input name="cod_vacante" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" disabled>
+                                <input name="cod_vacante_dis" class="form-control" type="number" value="<?php echo $fila['cod_vacante'] ?>" disabled>
+                                <input name="cod_vacante" class="form-control" type="hidden" value="<?php echo $fila['cod_vacante'] ?>">
                             </div>
                         </div>
 

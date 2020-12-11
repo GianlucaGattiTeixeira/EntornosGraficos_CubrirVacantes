@@ -15,64 +15,35 @@ include_once("../Logic/header.php");
 
 <body>
     <?php
-
     $dni = $_POST['dni'];
 
     if ($dni == "") {
-        header('Location: error.php?mensaje=DNI VACIO-');
-        exit();
+        echo '<script>window.location.replace("error.php?mensaje=El campo DNI se encuentra vacío -");</script>';
     }
 
     $conn = include("conexion.php");
     echo $dni;
-
-
     $sentencia = "SELECT * FROM usuario WHERE dni='$dni'";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $existe = mysqli_fetch_assoc($resultado);
     mysqli_free_result($resultado);
-
     if ($existe) {
-        $sentencia = "DELETE FROM usuario WHERE dni = '$dni'";
-
-        mysqli_query($link, $sentencia) or die(mysqli_error($link));
-
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>El usuario fue eliminado</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-    <?php
-
-
-    } else {
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>El usuario ingresado no existe</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-    <?php
-
+        try{
+            $sentencia = "DELETE FROM usuario WHERE dni = '$dni'";
+            if (!mysqli_query($link, $sentencia)){
+                throw new Exception();
+            }
+            echo '<script>window.location.replace("exito.php?mensaje=El usuario fue eliminado correctamente -");</script>';
+        }catch(Exception $e){
+            echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+        }
+        finally{
+            mysqli_close($link);
+        }
+    }else{
+        echo '<script>window.location.replace("error.php?mensaje=El usuario ingresado no existe -");</script>';
     }
-    
     mysqli_close($link);
     include_once("../Logic/footer.php");
-
     ?>
 </body>

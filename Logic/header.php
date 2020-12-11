@@ -80,8 +80,8 @@
               <a class="dropdown-item" href="../Logic/modificar_catedra.php">Modificar Cátedra</a>
             </div>
           </li>
-        <?php}?>
-        <?phpif (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {?>
+        <?php } ?>
+        <?php if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="vacanteDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Gestión Docentes
@@ -93,8 +93,6 @@
           </li>
         <?php
         }
-        ?>
-        <?php
         if (isset($_SESSION['es_admin']) and ($_SESSION['es_admin'] == 1) and !isset($_SESSION['legajo'])) {
         ?>
           <li class="nav-item dropdown">
