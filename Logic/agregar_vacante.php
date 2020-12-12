@@ -46,7 +46,7 @@ include_once("../Logic/header.php");
     //registrar la postulacion a la bd
     $sentencia2 = "INSERT INTO postulacion(dni,cod_vacante,fecha_hora,curriculum,cod_curriculum) VALUES ('$dni', '$cod_vacante', now(), '$nombre', '$cod_curriculum');";
     $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
-    mysqli_free_result($resultado2);
+    
 
     ?>
     <div class="container">

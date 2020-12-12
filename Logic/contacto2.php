@@ -14,10 +14,7 @@
             $email = $_POST['email'];
             $asunto = $_POST['asunto'];
             $consulta = $_POST['consulta'];
-            //echo $asunto . " - " . $consulta . " - " . $nombre . " - " . $email;
-            $destinatario = "danidruetta_97@hotmail.com";
-            $headers = "From: " . $nombre . " <" . $email . ">\r\n";
-            //mail($destinatario,$asunto,$consulta,$headers);
+            //mail($email,$asunto,$consulta);
             echo '<script>window.location.replace("exito.php?mensaje=Email enviado correctamente -");</script>';
         }
     }

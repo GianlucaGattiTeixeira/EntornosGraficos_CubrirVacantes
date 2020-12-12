@@ -40,7 +40,9 @@
                         <th scope="col">Informacion</th>
                         <?php
                         if (!isset($_SESSION['legajo'])) {
+                            if (isset($_SESSION['es_admin']) and $_SESSION['es_admin'] == 0) {
                             echo '<th scope="col"></th>';
+                            }
                         }
                         ?>
                     </tr>
@@ -59,7 +61,9 @@
                             <td><?php echo ($fila['info_general']); ?></td>
                             <?php
                             if (!isset($_SESSION['legajo'])) {
+                                if (isset($_SESSION['es_admin']) and $_SESSION['es_admin'] == 0) {
                                 echo '<td><button type="submit" class="btn btn-primary" name="seleccion" value="' . $fila['cod_vacante'] . '">Postularse</button></td>';
+                                }
                             }
                             ?>
 

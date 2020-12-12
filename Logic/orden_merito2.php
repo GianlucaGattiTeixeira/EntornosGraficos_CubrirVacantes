@@ -165,10 +165,8 @@ include_once("../Logic/header.php");
         $nombre = $usuario['nombre'];
         $email = $usuario['email'];
         $asunto = 'Resultado orden de mérito';
-        $consulta = 'Felicitaciones! Usted ha sido elegido como jefe de catedra';
-        $destinatario = "danidruetta_97@hotmail.com";
-        $headers = "From: " . $nombre . " <" . $email . ">\r\n";
-        //mail($destinatario,$asunto,$consulta,$headers);
+        $cuerpo = 'Felicitaciones ' . $nombre . '! Usted ha sido elegido como jefe de catedra';
+        //mail($email,$asunto,$cuerpo);
         //modificar tabla vacante
         $sentencia3 ="UPDATE vacante SET envio_mail='1' WHERE cod_vacante='$cod_vacante'";
         mysqli_query($link, $sentencia3) or die(mysqli_error($link));

@@ -1,10 +1,5 @@
 <?php
 session_start();
-// si no esta logeado o si esta logeado y es usuario comun: sale
-if (!isset($_SESSION['es_admin']) or ($_SESSION['es_admin'] == 0)) {
-    header("Location: ../Logic/index.php");
-    exit();
-}
 include_once("../Logic/header.php");
 ?>
 <!DOCTYPE html>
