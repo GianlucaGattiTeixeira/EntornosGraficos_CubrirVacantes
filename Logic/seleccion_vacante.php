@@ -28,21 +28,7 @@ include_once("../Logic/header.php");
         mysqli_free_result($resultado);
 
         if ($existe) {
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>Ya te has postulado a la vacante seleccionada</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-2">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-
-        <?php
+            echo '<script>window.location.replace("error.php?mensaje=Ya te has postulado a la vacante seleccionada -");</script>';
         } else {
             $_SESSION['cod_vacante'] = $cod_vacante;
         ?>

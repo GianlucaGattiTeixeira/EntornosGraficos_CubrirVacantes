@@ -44,25 +44,17 @@ include_once("../Logic/header.php");
 
 
     //registrar la postulacion a la bd
-    $sentencia2 = "INSERT INTO postulacion(dni,cod_vacante,fecha_hora,curriculum,cod_curriculum) VALUES ('$dni', '$cod_vacante', now(), '$nombre', '$cod_curriculum');";
-    $resultado2 = mysqli_query($link, $sentencia2) or die(mysqli_error($link));
-    
-
-    ?>
-    <div class="container">
-        <div class="form-group col-md-12">
-            <br />
-            <h5>Su curriculum ha sido enviado</h5>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-2">
-                <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-            </div>
-        </div>
-    </div>
-
-    <?php
+    try{
+        $sentencia2 = "INSERT INTO postulacion(dni,cod_vacante,fecha_hora,curriculum,cod_curriculum) VALUES ('$dni', '$cod_vacante', now(), '$nombre', '$cod_curriculum');";
+        if(!mysqli_query($link, $sentencia2)){
+            throw new Exception();
+        }
+        echo '<script>window.location.replace("exito.php?mensaje=Su curriculum ha sido enviado -");</script>';
+    }catch(Exception $e){
+        echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+    }finally{
+        mysqli_close($link);
+    }
     include_once("../Logic/footer.php");
     ?>
 

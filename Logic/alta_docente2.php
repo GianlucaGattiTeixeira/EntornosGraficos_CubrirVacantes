@@ -33,79 +33,41 @@ include_once("../Logic/header.php");
 
     $conn = include("conexion.php");
 
-
     $sentencia1 = "SELECT dni FROM usuario WHERE usuario='$usuario'";
     $resultado1 = mysqli_query($link, $sentencia1) or die(mysqli_error($link));
     $existe1 = mysqli_fetch_assoc($resultado1);
     mysqli_free_result($resultado1);
 
     if ($existe1) {
-    ?>
-        <div class="container">
-            <div class="form-group col-md-12">
-                <br />
-                <h5>El nombre de usuario ingresado ya existe, por favor ingrese otro nombre de usuario</h5>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-12">
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                </div>
-            </div>
-        </div>
-        <?php
+        echo '<script>window.location.replace("error.php?mensaje=El nombre de usuario ingresado ya existe -");</script>';
     } else {
-
         $sentencia = "SELECT dni FROM usuario WHERE dni='$dni'";
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
         $existe = mysqli_fetch_assoc($resultado);
         mysqli_free_result($resultado);
-
         if ($existe) {
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>El usuario ingresado ya existe</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-        <?php
+            echo '<script>window.location.replace("error.php?mensaje=Ya existe un usuario con el DNI ingresado -");</script>';
         } else {
-            $sentencia2 = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,es_admin) 
-                    values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','0')";
-
-            mysqli_query($link, $sentencia2) or die(mysqli_error($link));
-
-            $sentencia3 = "INSERT INTO jefe_catedra (legajo, dni, nombre, apellido, email) 
-                    VALUES ('$legajo','$dni','$nombre','$apellido','$email')";
-
-            mysqli_query($link, $sentencia3) or die(mysqli_error($link));
-
-        ?>
-            <div class="container">
-                <div class="form-group col-md-12">
-                    <br />
-                    <h5>El usuario fue registrado</h5>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
-                    </div>
-                </div>
-            </div>
-    <?php
+            try{
+                $sentencia2 = "INSERT INTO usuario (dni,nombre,apellido,email,usuario,contrasena,es_admin) values ('$dni','$nombre','$apellido','$email','$usuario','$contrasena','0')";
+                if(!mysqli_query($link, $sentencia2)){
+                    throw new Exception();
+                }
+                $sentencia3 = "INSERT INTO jefe_catedra (legajo, dni, nombre, apellido, email) VALUES ('$legajo','$dni','$nombre','$apellido','$email')";
+                if(!mysqli_query($link, $sentencia3)){
+                    throw new Exception();
+                }
+                echo '<script>window.location.replace("exito.php?mensaje=Usario registrado con éxito -");</script>';
+            }catch(Exception $e){
+                echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+            }
+            finally{
+                mysqli_close($link);
+            }
         }
     }
     mysqli_close($link);
     include_once("../Logic/footer.php");
     ?>
 </body>
-
 </html>

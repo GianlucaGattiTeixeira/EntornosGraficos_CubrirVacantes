@@ -31,12 +31,24 @@ function validacion_registro(){
         alert("El DNI ingresado es incorrecto,no puede estar formado por espacios en blanco");
         return false;
     }
+    else if (dni == ""){
+        alert("DNI Vacío");
+        return false;
+    }
     else if  (nombre && /^\s+$/.test(nombre)){
         alert("El nombre ingresado solo está formado por espacios en blanco");
         return false;
     }
+    else if (nombre == ""){
+        alert("Nombre Vacío");
+        return false;
+    }
     else if  (apellido && /^\s+$/.test(apellido)){
         alert("El apellido ingresado solo está formado por espacios en blanco");
+        return false;
+    }
+    else if (apellido == ""){
+        alert("Apellido Vacío");
         return false;
     }
     else if  (usuario &&/^\s+$/.test(usuario)){
@@ -47,12 +59,20 @@ function validacion_registro(){
         alert("El usuario debe tener una longitud mayor o igual a 4");
         return false;
     }
+    else if (usuario == ""){
+        alert("Usuario Vacío");
+        return false;
+    }
     else if  (contrasena && /^\s+$/.test(contrasena)){
         alert("La contraseña ingresada solo está formada por espacios en blanco");
         return false;
     }
     else if  (contrasena && (contrasena.length < 6 || contrasena.length > 16)){
         alert("La contraseña debe tener una longitud entre 6 y 16 caracteres");
+        return false;
+    }
+    else if (contrasena == ""){
+        alert("Contraseña Vacía");
         return false;
     }
     else if  (email && /^\s+$/.test(email)){
@@ -63,12 +83,24 @@ function validacion_registro(){
         alert("El formato del email es inválido");
         return false;
     }
+    else if (email == ""){
+        alert("E-Mail Vacío");
+        return false;
+    }
     else if  (direccion && /^\s+$/.test(direccion)){
         alert("La dirección ingresada solo está formada por espacios en blanco");
         return false;
     }
+    else if (direccion == ""){
+        alert("Dirección Vacía");
+        return false;
+    }
     else if (legajo && legajo.length != 5){
         alert("La longitud del legajo debe ser igual a 5");
+        return false;
+    }
+    else if (legajo == ""){
+        alert("Legajo Vacío");
         return false;
     }
     else{
