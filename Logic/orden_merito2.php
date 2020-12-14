@@ -165,7 +165,7 @@ include_once("../Logic/header.php");
         $nombre = $usuario['nombre'];
         $email = $usuario['email'];
         $asunto = 'Resultado orden de mérito';
-        $cuerpo = 'Felicitaciones ' . $nombre . '! Usted ha sido elegido como jefe de catedra';
+        $cuerpo = 'Felicitaciones ' . $nombre . '! Usted ha obtenido el mejor puntaje para la vacante de codigo: ' . $cod_vacante;
         //mail($email,$asunto,$cuerpo);
         //modificar tabla vacante
         $sentencia3 ="UPDATE vacante SET envio_mail='1' WHERE cod_vacante='$cod_vacante'";

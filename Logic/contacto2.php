@@ -14,7 +14,9 @@
             $email = $_POST['email'];
             $asunto = $_POST['asunto'];
             $consulta = $_POST['consulta'];
-            //mail($email,$asunto,$consulta);
+            $destinatario = "universidad@utnfrro.com.ar";
+            $headers = "From: " . $nombre . " <" . $email . ">\r\n"; //$headers = "From: Name name <emailemail@email.com>\r\n";
+            //mail($destinatario, $asunto, $consulta, $headers);
             echo '<script>window.location.replace("exito.php?mensaje=Email enviado correctamente -");</script>';
         }
     }
