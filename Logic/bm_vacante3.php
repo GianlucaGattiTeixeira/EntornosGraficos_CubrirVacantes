@@ -26,21 +26,16 @@ include_once("../Logic/header.php");
         echo '<script>window.location.replace("error.php?mensaje=Existen campos vacíos -");</script>';
     }
 
-    try{
-        $conn = include("conexion.php");
-        $sentencia ="UPDATE vacante SET cod_catedra='$cod_catedra', fecha_desde='$fecha_desde', fecha_hasta='$fecha_hasta', info_general='$info_general' WHERE cod_vacante='$cod_vacante'";
-        try{
-            if (!mysqli_query($link, $sentencia)){
-                throw new Exception();
-            }
-            echo '<script>window.location.replace("exito.php?mensaje=La vacante fue modificada correctamente -");</script>';
-        }catch(Exception $e){
-            echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+    $conn = include("conexion.php");
+    $sentencia = "UPDATE vacante SET cod_catedra='$cod_catedra', fecha_desde='$fecha_desde', fecha_hasta='$fecha_hasta', info_general='$info_general' WHERE cod_vacante='$cod_vacante'";
+    try {
+        if (!mysqli_query($link, $sentencia)) {
+            throw new Exception();
         }
-    }catch(mysqli_sql_exception $e){
+        echo '<script>window.location.replace("exito.php?mensaje=La vacante fue modificada correctamente -");</script>';
+    } catch (Exception $e) {
         echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
-    }
-    finally{
+    } finally {
         mysqli_close($link);
     }
     include_once("../Logic/footer.php");

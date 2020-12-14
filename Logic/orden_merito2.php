@@ -107,7 +107,7 @@ include_once("../Logic/header.php");
                         <div class="form-group">
                             <label class="control-label col-md-4">Puntaje:</label>
                             <div class="col-md-12">
-                                <input name="puntaje" class="form-control" type="number" min="0" max="100" step="1" value="<?php if (isset($fila['puntaje'])) {
+                                <input name="puntaje" placeholder="0-100" class="form-control" type="number" min="0" max="100" step="1" value="<?php if (isset($fila['puntaje'])) {
                                                                                                                                 echo $fila['puntaje'];
                                                                                                                             }  ?>">
                             </div>
