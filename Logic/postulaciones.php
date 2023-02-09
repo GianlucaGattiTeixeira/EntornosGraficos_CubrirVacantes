@@ -19,7 +19,6 @@ include_once("../Logic/header.php");
     <?php
 
     $conn = include("conexion.php");
-
     $es_admin = $_SESSION['es_admin'];
 
     if ($es_admin == 1) {
