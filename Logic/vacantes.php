@@ -16,7 +16,7 @@
                 FROM vacante v
                 INNER JOIN catedra c
                 ON v.cod_catedra=c.cod_catedra
-                WHERE NOW() > fecha_desde and NOW() < fecha_hasta";
+                WHERE NOW() > fecha_desde and NOW() < fecha_hasta AND c.baja  = 0";
 
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
    

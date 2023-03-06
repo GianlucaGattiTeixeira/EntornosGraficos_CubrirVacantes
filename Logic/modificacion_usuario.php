@@ -29,13 +29,14 @@ include_once("../Logic/header.php");
         </div>
 
         <div class="container">
-            <form action="modificacion_usuario2.php" method="post">
+            
                 <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">DNI</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -48,16 +49,19 @@ include_once("../Logic/header.php");
                                 <td><?php echo ($fila['dni']); ?></td>
                                 <td><?php echo ($fila['nombre']); ?></td>
                                 <td><?php echo ($fila['apellido']); ?></td>
-                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/Modificar.svg" />Modificar</button></td>
+                                <form action="modificacion_usuario2.php" method="post">
+                                    <td><button type="submit" class="btn btn-outline-info" name="seleccion" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/Modificar.svg" />Modificar</button></td>
+                                </form>
+                                <form action="eliminar_usuario_confirmar.php" method="post">
+                                    <td><button type="submit" class="btn btn-danger" name="dniUsuarioEliminar" value="<?php echo $fila['dni']; ?>"><img src="../Imagenes/BorrarBlanco.svg" />Eliminar</button></td>
+                                </form>
                             </tr>
-
                         <?php
                         }
                         ?>
 
                     </tbody>
                 </table>
-            </form>
         </div>
     </div>
  

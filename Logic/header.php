@@ -77,7 +77,8 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
               <a class="dropdown-item" href="../Logic/alta_catedra.php">Alta Cátedra</a>
-              <a class="dropdown-item" href="../Logic/modificar_catedra.php">Modificar Cátedra</a>
+              <a class="dropdown-item" href="../Logic/modificar_catedra.php">Modificar - Eliminar Cátedra</a>
+              <a class="dropdown-item" href="../Logic/reactivar_catedra_listado.php">Reestablecer Cátedra</a>
             </div>
           </li>
         <?php } ?>
@@ -88,7 +89,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
               <a class="dropdown-item" href="../Logic/alta_docente.php">Alta Docente</a>
-              <a class="dropdown-item" href="../Logic/modificar_docente.php">Modificar Docente</a>
+              <a class="dropdown-item" href="../Logic/modificar_docente.php">Modificar - Eliminar Docente</a>
             </div>
           </li>
         <?php
@@ -100,7 +101,7 @@
               Gestión Usuarios
             </a>
             <div class="dropdown-menu" aria-labelledby="vacanteDropdown">
-              <a class="dropdown-item" href="../Logic/modificacion_usuario.php">Modificar Usuario</a>
+              <a class="dropdown-item" href="../Logic/modificacion_usuario.php">Modificar - Eliminar Usuario</a>
             </div>
           </li>
         <?php

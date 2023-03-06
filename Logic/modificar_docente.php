@@ -18,7 +18,8 @@ include_once("../Logic/header.php");
     <?php
     $conn = include("conexion.php");
 
-    $sentencia = "SELECT * FROM jefe_catedra";
+    $sentencia = "SELECT DISTINCT jc.*, CASE WHEN ca.cod_catedra IS NULL THEN 0 ELSE 1 END AS tiene_catedras  
+                    FROM jefe_catedra jc LEFT JOIN catedra ca ON jc.legajo = ca.legajo";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
 
     ?>
@@ -29,7 +30,7 @@ include_once("../Logic/header.php");
         </div>
 
         <div class="container">
-            <form action="modificar_docente2.php" method="post">
+           
                 <table class="table">
                     <thead>
                         <tr>
@@ -38,6 +39,7 @@ include_once("../Logic/header.php");
                             <th scope="col">Nombre</th>
                             <th scope="col">Apellido</th>
                             <th scope="col">Email</th>
+                            <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -52,7 +54,20 @@ include_once("../Logic/header.php");
                                 <td><?php echo ($fila['nombre']); ?></td>
                                 <td><?php echo ($fila['apellido']); ?></td>
                                 <td><?php echo ($fila['email']); ?></td>
-                                <td><button type="submit" class="btn btn-outline-info" style="color: blue;" name="seleccion" value="<?php echo $fila['legajo']; ?>"><img src="../Imagenes/Modificar.svg" />Modificar</button></td>
+                                <form action="modificar_docente2.php" method="post">
+                                    <td><button type="submit" class="btn btn-outline-info" name="seleccion" value="<?php echo $fila['legajo']; ?>"><img src="../Imagenes/Modificar.svg" />Modificar</button></td>
+                                </form>
+                                <?php if(!$fila['tiene_catedras']) {?>
+                                    <form action="eliminar_docente_confirmar.php" method="post">
+                                        <td>
+                                            <button type="submit" class="btn btn-danger" name="seleccion" value="<?php echo $fila['legajo']; ?>"><img src="../Imagenes/BorrarBlanco.svg" />Eliminar  </button>
+                                        </td>
+                                    </form>
+                                <?php }else{ ?>
+                                    <td>
+                                        <button class="btn btn-danger"  disabled data-toggle="tooltip" data-placement="top" title="No se pudede eliminar, el docente tiene catedras asignadas."><img src="../Imagenes/BorrarBlanco.svg" /> Eliminar </button>
+                                    </td>
+                                <?php } ?>
                             </tr>
 
                         <?php
@@ -61,7 +76,7 @@ include_once("../Logic/header.php");
 
                     </tbody>
                 </table>
-            </form>
+            
         </div>
     </div>
 

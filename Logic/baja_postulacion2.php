@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['dni'])) {
+    header("Location: ../Logic/index.php");
+    exit();
+}
 include_once("../Logic/header.php");
 ?>
 <!DOCTYPE html>
@@ -27,32 +31,36 @@ include_once("../Logic/header.php");
         $cod_vacante = (int) $cod_vacante;
         
         $conn = include("conexion.php");
-        $sentencia = "SELECT * FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
-        $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
-        $existe = mysqli_fetch_assoc($resultado);
-        mysqli_free_result($resultado);
-
-        if ($existe) {
-            $a = "../Archivos/";
-            $b = $existe['cod_curriculum'];
-            $c = $existe['curriculum'];
-            $direccion = $a . $b . $c;
-            unlink($direccion);
-            try{
-                $sentencia = "DELETE FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
-                if (!mysqli_query($link, $sentencia)){
-                    throw new Exception();
+        if($_SESSION["dni"] == $dni || ($_SESSION['es_admin' == 1 && !isset($_SESSION['legajo'])])){
+            $sentencia = "SELECT * FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
+            $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
+            $existe = mysqli_fetch_assoc($resultado);
+            mysqli_free_result($resultado);
+            if ($existe) {
+                $a = "../Archivos/";
+                $b = $existe['cod_curriculum'];
+                $c = $existe['curriculum'];
+                $direccion = $a . $b . $c;
+                unlink($direccion);
+                try{
+                    $sentencia = "DELETE FROM postulacion WHERE dni='$dni' and fecha_hora='$fecha_hora' and cod_vacante='$cod_vacante'";
+                    if (!mysqli_query($link, $sentencia)){
+                        throw new Exception();
+                    }
+                    echo '<script>window.location.replace("exito.php?mensaje=La postulación fue eliminada -");</script>';
+                }catch(Exception $e){
+                    echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
                 }
-                echo '<script>window.location.replace("exito.php?mensaje=La postulación fue eliminada -");</script>';
-            }catch(Exception $e){
-                echo '<script>window.location.replace("error.php?mensaje=Error interno del servidor -");</script>';
+                finally{
+                    mysqli_close($link);
+                }
+            } else {
+                echo '<script>window.location.replace("error.php?mensaje=La postulación ingresada no existe -");</script>';
             }
-            finally{
-                mysqli_close($link);
-            }
-        } else {
-            echo '<script>window.location.replace("error.php?mensaje=La postulación ingresada no existe -");</script>';
+        }else{
+            echo '<script>window.location.replace("error.php?mensaje=Permisos insuficientes para realizar la operación -");</script>';
         }
+
         mysqli_close($link);
         ?>
 </body>

@@ -25,7 +25,7 @@ include_once("../Logic/header.php");
 
     $sentencia = "SELECT c.cod_catedra, c.nombre_catedra, jc.legajo, jc.nombre, jc.apellido, d.cod_departamento, d.nombre as nombre_departamento
                     FROM catedra c       
-                    LEFT JOIN jefe_catedra jc
+                    INNER JOIN jefe_catedra jc
                     ON c.legajo = jc.legajo                       
                     INNER JOIN departamento d
                     ON c.cod_departamento = d.cod_departamento
@@ -51,7 +51,6 @@ include_once("../Logic/header.php");
     <div class="container">
         <br />
         <h3 align="center">Modificar cátedra</h3>
-        <form action="modificar_catedra3.php" method="post">
             <div class="form-group col-md-12">
                 <h5>Datos actuales</h5>
             </div>
@@ -66,10 +65,16 @@ include_once("../Logic/header.php");
             </div>
 
             <div class="form-row">
-                <div class="form-group col-md-12">
+                <div class="form-group col-md-6">
                     <label class="control-label col-md-2">Catedra:</label>
                     <div class="col-md-12">
-                        <input name="nombre_catedra" class="form-control" type="text" value="<?php echo $fila['nombre_catedra'] ?>">
+                        <input name="nombre_catedra" class="form-control" type="text" value="<?php echo $fila['nombre_catedra'] ?>" disabled>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="control-label col-md-12">Departamento:</label>
+                    <div class="col-md-12">
+                        <input name="cod_departamento" class="form-control" type="text" value="<?php echo $fila['nombre_departamento'] ?>" disabled>
                     </div>
                 </div>
             </div>
@@ -78,32 +83,25 @@ include_once("../Logic/header.php");
                 <div class="form-group col-md-6">
                     <label class="control-label col-md-12">Jefe de cátedra:</label>
                     <div class="col-md-12">
-                        <select name="legajo" class="custom-select mr-sm-22">
-                            <option value="<?= $fila['legajo']; ?>" selected="true"><?= $fila['nombre'] . " " . $fila['apellido']; ?></option>
-                            <?php while ($fila2 = mysqli_fetch_array($resultado2)) { ?>
-                                <option value="<?= $fila2['legajo']; ?>"><?= $fila2['nombre'] . " " . $fila2['apellido']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <input name="legajo" class="form-control" type="text" value="<?php echo $fila['nombre'] ?>" disabled>
                     </div>
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label class="control-label col-md-12">Departamento:</label>
+                    <label class="control-label col-md-12">Legajo:</label>
                     <div class="col-md-12">
-                        <select name="cod_departamento" class="custom-select mr-sm-22">
-                            <option value="<?= $fila['cod_departamento']; ?>" selected="true"><?= $fila['nombre_departamento']; ?></option>
-                            <?php while ($fila3 = mysqli_fetch_array($resultado3)) { ?>
-                                <option value="<?= $fila3['cod_departamento']; ?>"><?= $fila3['nombre']; ?></option>
-                            <?php } ?>
-                        </select>
+                        <input name="cod_departamento" class="form-control" type="text" value="<?php echo $fila['legajo'] ?>" disabled>
                     </div>
                 </div>
             </div>
 
             <div class="form-group">
                 <div class="col-md-8">
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
-                    <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
+                    <form action="eliminar_catedra.php" method="post">
+                        <input type="hidden" value=" <?php echo $fila['cod_catedra'] ?> " name="cod_catedra">
+                        <button type="submit" class="btn btn-danger"> <img src="../Imagenes/BorrarBlanco.svg" /> Eliminar</button>
+                        <a href="../Logic/index.php" class="btn btn-primary">Menu principal</a>
+                    </form>
                 </div>
             </div>
         </form>

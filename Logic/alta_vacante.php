@@ -17,7 +17,7 @@ include_once("../Logic/header.php");
 <body>
 	<?php
 	$conn = include("conexion.php");
-	$sentencia = "SELECT cod_catedra, nombre_catedra FROM catedra";
+	$sentencia = "SELECT cod_catedra, nombre_catedra FROM catedra WHERE baja = 0";
 	$resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
 	?>
 	<div class="container">
