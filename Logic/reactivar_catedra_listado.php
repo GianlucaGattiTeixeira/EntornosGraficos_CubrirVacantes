@@ -17,7 +17,7 @@ include_once("../Logic/header.php");
     <div class="container">
         <div class="form-group col-md-12">
             <br />
-            <h3>Modificar o eliminar cátedra</h3>
+            <h3>Reestablecer cátedra</h3>
         </div>
 
         <?php
@@ -29,7 +29,7 @@ include_once("../Logic/header.php");
                         ON c.legajo = jc.legajo                       
                         INNER JOIN departamento d
                         ON c.cod_departamento = d.cod_departamento
-                        WHERE c.baja = 0";
+                        WHERE c.baja = 1";
 
         $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
         
@@ -45,7 +45,6 @@ include_once("../Logic/header.php");
                             <th scope="col">Jefe de cátedra</th>
                             <th scope="col">Departamento</th>
                             <th scope="col"></th>
-                            <th scope="col"></th>
                         </tr>
                     </thead>
 
@@ -58,11 +57,8 @@ include_once("../Logic/header.php");
                                 <td><?php echo ($fila['nombre_catedra']); ?></td>
                                 <td><?php echo ($fila['nombre']) . ' ' . ($fila['apellido']); ?></td>
                                 <td><?php echo ($fila['nombre_departamento']); ?></td>
-                                <form action="modificar_catedra2.php" method="post">
-                                    <td><button type="submit" class="btn btn-outline-info" name="seleccion" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/Modificar.svg" /> Modificar</button></td>
-                                </form>
-                                <form action="eliminar_catedra_confirmar.php" method="post">
-                                    <td><button type="submit" class="btn btn-danger" name="seleccion" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/BorrarBlanco.svg" /> Eliminar</button></td>
+                                <form action="reactivar_catedra.php" method="post">
+                                    <td><button type="submit" class="btn btn btn-outline-success" name="cod_catedra" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/reestablecer.svg" /> Reestablecer</button></td>
                                 </form>
                             </tr>
 

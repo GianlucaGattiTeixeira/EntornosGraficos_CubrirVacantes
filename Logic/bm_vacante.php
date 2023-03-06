@@ -24,7 +24,7 @@ include_once("../Logic/header.php");
         <?php
         $conn = include("conexion.php");
 
-        $sentencia = "SELECT v.cod_vacante, v.fecha_desde, v.fecha_hasta, v.info_general, c.nombre_catedra
+        $sentencia = "SELECT v.cod_vacante, v.fecha_desde, v.fecha_hasta, v.info_general, c.nombre_catedra, c.baja
                 FROM vacante v
                 INNER JOIN catedra c
                 ON v.cod_catedra=c.cod_catedra
@@ -56,8 +56,8 @@ include_once("../Logic/header.php");
                         while ($fila = mysqli_fetch_array($resultado)) {
                         ?>
                             <tr>
-                                <td><?php echo ($fila['cod_vacante']); ?></td>
-                                <td><?php echo ($fila['nombre_catedra']); ?></td>
+                                <td style="<?php if($fila['baja'] == 1){echo('color:red');}?>"><?php echo ($fila['cod_vacante']); ?></td>
+                                <td><?php echo ($fila['nombre_catedra']);if ($fila['baja'] == 1){echo ('(baja)');} ; ?></td>
                                 <td><?php echo ($fila['fecha_desde']); ?></td>
                                 <td><?php echo ($fila['fecha_hasta']); ?></td>
                                 <td><?php echo ($fila['info_general']); ?></td>

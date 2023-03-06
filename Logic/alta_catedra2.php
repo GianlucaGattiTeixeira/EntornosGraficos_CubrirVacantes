@@ -30,10 +30,14 @@ include_once("../Logic/header.php");
     $conn = include("conexion.php");
     $sentencia1 = "SELECT cod_catedra FROM catedra WHERE nombre_catedra = '$nombre_catedra'";
     $resultado1 = mysqli_query($link, $sentencia1) or die(mysqli_error($link));
-    $existe1 = mysqli_fetch_assoc($resultado1);
+    $existe_nombre_catedra = mysqli_fetch_assoc($resultado1);
 
-    if ($existe1) {
-        echo '<script>window.location.replace("error.php?mensaje=La cátedra ingresada ya existe -");</script>';
+    if ($existe_nombre_catedra) {
+        if( $existe_nombre_catedra["baja"] == 1){
+            echo '<script>window.location.replace("error.php?mensaje=La cátedra ingresada ya existe y esta dada de baja por favor reactivela -");</script>';
+        }else{
+            echo '<script>window.location.replace("error.php?mensaje=La cátedra ingresada ya existe -");</script>';
+        }
     }else {
         try{
             $sentencia = "INSERT INTO catedra (nombre_catedra, legajo, cod_departamento) VALUES ('$nombre_catedra','$legajo','$cod_departamento')";
