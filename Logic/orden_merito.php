@@ -29,7 +29,7 @@ include_once("../Logic/header.php");
             ON c.cod_catedra = v.cod_catedra
             INNER JOIN postulacion p 
             ON p.cod_vacante = v.cod_vacante
-            WHERE c.legajo = '$legajo'";
+            WHERE c.legajo = '$legajo' AND c.baja = 0";
 
     $resultado1 = mysqli_query($link, $sentencia1) or die(mysqli_error($link));
 
