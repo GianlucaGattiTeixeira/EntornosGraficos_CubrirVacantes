@@ -58,7 +58,7 @@ include_once("../Logic/header.php");
                                 <td><?php echo ($fila['nombre']) . ' ' . ($fila['apellido']); ?></td>
                                 <td><?php echo ($fila['nombre_departamento']); ?></td>
                                 <form action="reactivar_catedra.php" method="post">
-                                    <td><button type="submit" class="btn btn btn-outline-success" name="cod_catedra" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/reestablecer.svg" /> Reestablecer</button></td>
+                                    <td><button type="submit" class="btn btn btn-outline-success" name="cod_catedra" value="<?php echo $fila['cod_catedra']; ?>"><img src="../Imagenes/Reestablecer.svg" /> Reestablecer</button></td>
                                 </form>
                             </tr>
 

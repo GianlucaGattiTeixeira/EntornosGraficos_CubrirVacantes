@@ -24,7 +24,8 @@ include_once("../Logic/header.php");
     $sentencia = "SELECT * FROM usuario WHERE dni = '$dni'";
     $resultado = mysqli_query($link, $sentencia) or die(mysqli_error($link));
     $sentencia_es_docente = "SELECT * FROM jefe_catedra WHERE dni = '$dni'";
-    $es_docente = mysqli_query($link, $sentencia_es_docente);
+    $es_docente_resultado = mysqli_query($link, $sentencia_es_docente);
+    $es_docente = mysqli_fetch_array($es_docente_resultado);
     $fila = mysqli_fetch_array($resultado);
     ?>
     <div class="container">

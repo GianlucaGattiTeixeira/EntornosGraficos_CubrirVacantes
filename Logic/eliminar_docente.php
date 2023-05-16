@@ -27,14 +27,12 @@ include_once("../Logic/header.php");
             // validar que no tenga catedras
             $tiene_catedras_query = "SELECT * FROM catedra WHERE legajo = $legajo";
             $tiene_catedras = mysqli_query($sentencia, $tiene_catedras_query);
-            if(!$tiene_catedras){
+            if($tiene_catedras){
                 echo ('<script>window.location.replace("error.php?mensaje=No se pudo eliminar docente ya que tiene cátedras asignadas.");</script>');
             }
             else{
                 $sentencia ="DELETE FROM jefe_catedra WHERE legajo = $legajo";
-                echo $sentencia;
                 $success = mysqli_query($link, $sentencia);
-                echo (string($success));
                 if (!$success){
                     throw new Exception();
                 }
@@ -42,7 +40,7 @@ include_once("../Logic/header.php");
                 // if (!mysqli_query($link, $sentenci2)){
                 //     throw new Exception();
                 // }
-                echo '<script>window.location.replace("exito.php?mensaje=El docente ha sido ELIMINADO correctamente -");</script>';
+                echo('<script>window.location.replace("exito.php?mensaje=El docente ha sido ELIMINADO correctamente -");</script>');
             }
         }
         catch(Exception $e){
